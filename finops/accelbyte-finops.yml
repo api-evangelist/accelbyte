@@ -1,0 +1,111 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: AccelByte
+providerId: accelbyte
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Gaming
+- Backend
+- BaaS
+- Live Services
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of AccelByte Gaming Services (AGS) spend. AGS is a B2B platform
+  billed primarily on Monthly Active Users (MAU) across the online services
+  suite, plus pass-through dedicated server compute (Armada) for session-based
+  games and storage/egress for Cloud Save and UGC. Because pricing is
+  quote-based, cost management centers on tracking MAU, server-hours, and
+  storage rather than public per-request rates.
+notes: >-
+  AccelByte does not publish public unit rates; verify commercial structure
+  (MAU tiers, DS compute pass-through, storage/egress) with AccelByte during
+  reconciliation.
+sources:
+- https://accelbyte.io/pricing
+- https://accelbyte.io/products
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: AccelByte
+serviceCategory: Developer Tools and Platform
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: AccelByte Gaming Services
+  ServiceCategory: Developer Tools and Platform
+  ProviderName: AccelByte
+  PublisherName: AccelByte
+  InvoiceIssuerName: AccelByte
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: monthly_active_users
+  description: Distinct active players in the billing period; primary AGS billing metric.
+  unit: users
+  aggregation: max
+  dimensions:
+  - environment
+  - namespace
+- name: dedicated_server_hours
+  description: Armada/DSMC dedicated server compute hours for session-based games.
+  unit: hours
+  aggregation: sum
+  dimensions:
+  - environment
+  - region
+- name: cloudsave_storage
+  description: Stored player and game record data (Cloud Save).
+  unit: gigabytes
+  aggregation: max
+  dimensions:
+  - environment
+  - namespace
+- name: ugc_storage
+  description: Stored and served user-generated content payloads.
+  unit: gigabytes
+  aggregation: max
+  dimensions:
+  - environment
+  - namespace
+- name: telemetry_events
+  description: Telemetry events ingested through Game Telemetry.
+  unit: events
+  aggregation: sum
+  dimensions:
+  - environment
+  - namespace
+- name: data_egress
+  description: Network egress for content delivery and server traffic.
+  unit: gigabytes
+  aggregation: sum
+  dimensions:
+  - environment
+  - region
+principles:
+- name: Visibility
+  description: Track MAU, dedicated server-hours, and storage per environment/namespace against the AGS agreement.
+- name: Allocation
+  description: Map namespaces and environments to titles/teams so platform spend is attributed to the right game.
+- name: Optimization
+  description: Right-size dedicated server fleets per region, batch telemetry, and prune stale Cloud Save/UGC data to control compute, egress, and storage.
+- name: Accountability
+  description: Assign per-title owners; review MAU-driven cost and server utilization monthly against forecast.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

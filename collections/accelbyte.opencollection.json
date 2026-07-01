@@ -1,0 +1,392 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IAM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue an OAuth2 access token.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/iam/v3/oauth/token",
+            "body": {
+              "type": "urlencoded",
+              "data": [
+                { "key": "grant_type", "value": "client_credentials" }
+              ]
+            }
+          },
+          "docs": "OAuth2 token endpoint. Supports client_credentials, authorization_code, refresh_token, and token-exchange grants."
+        },
+        {
+          "info": {
+            "name": "Register a new user account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/iam/v3/public/namespaces/{namespace}/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new user account in the namespace."
+        },
+        {
+          "info": {
+            "name": "Get the current authenticated user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/iam/v3/public/namespaces/{namespace}/users/me"
+          },
+          "docs": "Return the currently authenticated user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Basic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a player's profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/basic/v1/public/namespaces/{namespace}/users/{userId}/profiles"
+          },
+          "docs": "Get a player's profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cloud Save",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a player record by key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}"
+          },
+          "docs": "Get a player record by key."
+        },
+        {
+          "info": {
+            "name": "Create or replace a player record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or replace a player record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a player's stat items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/social/v1/namespaces/{namespace}/users/{userId}/statitems"
+          },
+          "docs": "List a player's stat items."
+        },
+        {
+          "info": {
+            "name": "Bulk update a player's stat item values.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://demo.accelbyte.io/social/v1/namespaces/{namespace}/users/{userId}/statitems/value/bulk",
+            "body": {
+              "type": "json",
+              "data": "[]"
+            }
+          },
+          "docs": "Bulk update a player's stat item values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leaderboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all-time leaderboard rankings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/all"
+          },
+          "docs": "Get all-time leaderboard rankings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Matchmaking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a match ticket.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/match2/v1/namespaces/{namespace}/match-tickets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a match ticket to a match pool."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a game session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/session/v1/public/namespaces/{namespace}/gamesession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a game session (Session V2)."
+        },
+        {
+          "info": {
+            "name": "Create a party session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/session/v1/public/namespaces/{namespace}/party"
+          },
+          "docs": "Create a party session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Platform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query catalog items by criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/platform/public/namespaces/{namespace}/items/byCriteria"
+          },
+          "docs": "Query catalog items by criteria."
+        },
+        {
+          "info": {
+            "name": "List a user's entitlements.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/platform/public/namespaces/{namespace}/users/{userId}/entitlements"
+          },
+          "docs": "List a user's entitlements."
+        },
+        {
+          "info": {
+            "name": "Create an order (checkout).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/platform/public/namespaces/{namespace}/users/{userId}/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order (checkout)."
+        },
+        {
+          "info": {
+            "name": "Get a user's wallet for a currency.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}"
+          },
+          "docs": "Get a user's wallet for a currency."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Season Pass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the player's progression in the current season.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/seasonpass/v1/public/namespaces/{namespace}/seasons/current/progression"
+          },
+          "docs": "Get the player's progression in the current season."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Achievement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a player's achievements.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements"
+          },
+          "docs": "List a player's achievements."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DSMC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Claim a ready dedicated server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/dsmcontroller/namespaces/{namespace}/servers/claim",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim a ready dedicated server for a session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Game Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Save a batch of telemetry events.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/game-telemetry/v1/protected/events",
+            "body": {
+              "type": "json",
+              "data": "[]"
+            }
+          },
+          "docs": "Save a batch of telemetry events."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "UGC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create UGC content in a channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents/s3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create UGC content in a channel and return a presigned upload URL."
+        }
+      ]
+    }
+  ]
+}

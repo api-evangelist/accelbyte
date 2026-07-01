@@ -1,0 +1,63 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: AccelByte
+providerId: accelbyte
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Gaming
+- Backend
+- BaaS
+- Live Services
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  AGS enforces per-environment, per-service rate limiting at the API gateway.
+  Limits are applied per client/IP and per endpoint and are tuned per customer
+  environment and plan; high-volume ingestion services (Game Telemetry) and
+  authentication (IAM token) are the most commonly throttled surfaces. Exact
+  numeric limits are environment-specific and not published as a single public
+  table, so they are not reconciled in this artifact.
+notes: >-
+  Confirm per-service and per-environment limits with AccelByte during
+  reconciliation; limits differ between the shared demo environment and
+  provisioned customer environments and can be raised for enterprise plans.
+sources:
+- https://docs.accelbyte.io/
+- https://accelbyte.io/products
+responseCodes:
+  throttled: 429
+limits:
+- name: IAM Token Requests
+  scope: client
+  metric: requests
+  limit: see provider documentation
+  notes: OAuth2 token issuance is rate limited per client to protect the auth service.
+- name: Per-Service Requests
+  scope: client
+  metric: requests
+  limit: see provider documentation
+  notes: Each AGS service (Cloud Save, Statistics, Platform, etc.) has its own gateway limit.
+- name: Game Telemetry Ingestion
+  scope: client
+  metric: events
+  limit: see provider documentation
+  notes: Telemetry endpoints accept batched events; ingestion is throttled per environment.
+- name: Matchmaking Tickets
+  scope: client
+  metric: requests
+  limit: see provider documentation
+  notes: Ticket submission is limited to protect the matchmaking pipeline.
+policies:
+- name: Environment-Scoped Limits
+  description: Limits are provisioned per customer environment and per namespace and can be increased on enterprise plans.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Batching
+  description: Prefer batched/bulk endpoints (e.g., bulk stat updates, batched telemetry) to stay within request limits.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

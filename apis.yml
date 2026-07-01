@@ -1,0 +1,299 @@
+aid: accelbyte
+url: https://raw.githubusercontent.com/api-evangelist/accelbyte/refs/heads/main/apis.yml
+name: AccelByte
+kind: company
+description: AccelByte provides AccelByte Gaming Services (AGS), a modular backend
+  platform for live games. Its REST services cover player accounts and IAM, player
+  profiles, cloud save, statistics and leaderboards, matchmaking, lobby and session,
+  commerce and monetization, seasons and battle pass, achievements, dedicated server
+  management (Armada/DSMC), analytics and telemetry, and user-generated content, all
+  secured with OAuth2 client credentials and namespace-scoped IAM.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Gaming
+- Backend
+- BaaS
+- Live Services
+- Player Accounts
+- Commerce
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: accelbyte:accelbyte-iam-api
+  name: AccelByte IAM API
+  tags:
+  - IAM
+  - Identity
+  - OAuth2
+  - Authentication
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/access/
+    type: Documentation
+  - url: https://docs.accelbyte.io/api-explorer/
+    type: APIReference
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Identity and Access Management - user registration and login, OAuth2
+    token issuance (client credentials, authorization code, platform token exchange),
+    JWT verification, roles, permissions, and third-party platform account linking,
+    all scoped to a namespace.
+- aid: accelbyte:accelbyte-basic-api
+  name: AccelByte Basic (Player Profile) API
+  tags:
+  - Player Profile
+  - Basic
+  - User Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  baseURL: https://demo.accelbyte.io/basic
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Player profiles, namespaces, files/avatar storage, and misc user-facing
+    metadata that games attach to a player identity.
+- aid: accelbyte:accelbyte-cloudsave-api
+  name: AccelByte Cloud Save API
+  tags:
+  - Cloud Save
+  - Player Data
+  - Records
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  baseURL: https://demo.accelbyte.io/cloudsave
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Stores and retrieves game and player data as JSON records - player records,
+    game records, and public/private key-value state that persists across sessions
+    and devices.
+- aid: accelbyte:accelbyte-statistics-api
+  name: AccelByte Statistics & Leaderboard API
+  tags:
+  - Statistics
+  - Leaderboard
+  - Stats
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  baseURL: https://demo.accelbyte.io/social
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+    type: Documentation
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Defines stat configurations, records player stat items, and exposes
+    ranked leaderboards (all-time, weekly, monthly) built on top of tracked statistics.
+- aid: accelbyte:accelbyte-matchmaking-api
+  name: AccelByte Matchmaking API
+  tags:
+  - Matchmaking
+  - Match
+  - Sessions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  baseURL: https://demo.accelbyte.io/match2
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Rule-based matchmaking (Matchmaking V2) - create and manage match pools,
+    submit match tickets, and produce balanced match sessions handed off to the session
+    service.
+- aid: accelbyte:accelbyte-session-api
+  name: AccelByte Lobby & Session API
+  tags:
+  - Session
+  - Lobby
+  - Party
+  - Presence
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/play/session/
+  baseURL: https://demo.accelbyte.io/session
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/play/session/
+    type: Documentation
+  - url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Game sessions and parties (Session V2) plus lobby features - party
+    management, friends, presence, and chat coordination for players before and during
+    a match.
+- aid: accelbyte:accelbyte-platform-api
+  name: AccelByte Commerce (Platform) API
+  tags:
+  - Commerce
+  - Monetization
+  - Store
+  - Entitlement
+  - Wallet
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/monetization/
+  baseURL: https://demo.accelbyte.io/platform
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/monetization/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: In-game commerce and monetization - catalog/stores, items, entitlements,
+    wallets and virtual currencies, orders and checkout, fulfillment, and integrations
+    with real-money payment gateways.
+- aid: accelbyte:accelbyte-seasonpass-api
+  name: AccelByte Seasons & Battle Pass API
+  tags:
+  - Seasons
+  - Battle Pass
+  - Rewards
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  baseURL: https://demo.accelbyte.io/seasonpass
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Season Pass / Battle Pass - define seasons, tiers, passes, and rewards,
+    grant experience, and track player progression and claimed rewards across a season.
+- aid: accelbyte:accelbyte-achievement-api
+  name: AccelByte Achievement API
+  tags:
+  - Achievements
+  - Trophies
+  - Progression
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  baseURL: https://demo.accelbyte.io/achievement
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Achievement definitions (incremental and standard), player unlock tracking,
+    and tie-ins with statistics so achievements progress automatically as stats change.
+- aid: accelbyte:accelbyte-dsmc-api
+  name: AccelByte Dedicated Server (Armada/DSMC) API
+  tags:
+  - Dedicated Servers
+  - DSMC
+  - Armada
+  - Fleet
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  baseURL: https://demo.accelbyte.io/dsmcontroller
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Dedicated Server Manager (Armada/DSMC) - register and manage dedicated
+    game server fleets, claim and release server sessions, and orchestrate multi-region
+    server scaling for session-based games.
+- aid: accelbyte:accelbyte-analytics-api
+  name: AccelByte Analytics & Telemetry API
+  tags:
+  - Analytics
+  - Telemetry
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  baseURL: https://demo.accelbyte.io/game-telemetry
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: Game Telemetry - ingest gameplay and client telemetry events (single
+    and batched) for the analytics pipeline, feeding dashboards and downstream data
+    exports.
+- aid: accelbyte:accelbyte-ugc-api
+  name: AccelByte UGC API
+  tags:
+  - UGC
+  - User Generated Content
+  - Content
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+  baseURL: https://demo.accelbyte.io/ugc
+  properties:
+  - url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+    type: Documentation
+  - url: openapi/accelbyte-openapi.yml
+    type: OpenAPI
+  - url: collections/accelbyte.postman_collection.json
+    type: PostmanCollection
+  - url: collections/accelbyte.opencollection.json
+    type: OpenCollection
+  description: User-Generated Content - lets players create, upload, tag, share, like,
+    and download content (channels, contents, and metadata) with moderation hooks.
+common:
+- type: GitHubOrganization
+  url: https://github.com/AccelByte
+- type: LinkedIn
+  url: https://www.linkedin.com/company/accelbyte
+- type: Website
+  url: https://accelbyte.io/
+- type: Documentation
+  url: https://docs.accelbyte.io/
+- type: Plans
+  url: plans/accelbyte-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/accelbyte-rate-limits.yml
+- type: FinOps
+  url: finops/accelbyte-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

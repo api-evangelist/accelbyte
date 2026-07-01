@@ -1,0 +1,458 @@
+{
+  "info": {
+    "_postman_id": "b3f2a1c4-8d5e-4a2b-9f6c-1e7d2a9b4c0f",
+    "name": "AccelByte Gaming Services (AGS) API",
+    "description": "Representative Postman collection for the core AccelByte Gaming Services (AGS) REST services. Each service is mounted under its own path prefix on the environment base URL ({{baseUrl}}, e.g. https://demo.accelbyte.io). Requests are scoped to a {{namespace}} and secured with an OAuth2 Bearer token issued by IAM.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{bearerToken}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://demo.accelbyte.io" },
+    { "key": "namespace", "value": "demogame" },
+    { "key": "bearerToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "IAM",
+      "item": [
+        {
+          "name": "Issue an OAuth2 access token.",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                { "key": "username", "value": "{{clientId}}", "type": "string" },
+                { "key": "password", "value": "{{clientSecret}}", "type": "string" }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "grant_type", "value": "client_credentials" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/iam/v3/oauth/token",
+              "host": ["{{baseUrl}}"],
+              "path": ["iam", "v3", "oauth", "token"]
+            },
+            "description": "OAuth2 token endpoint. Supports client_credentials, authorization_code, refresh_token, and token-exchange grants."
+          },
+          "response": []
+        },
+        {
+          "name": "Register a new user account.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authType\": \"EMAILPASSWD\",\n  \"emailAddress\": \"player@example.com\",\n  \"password\": \"<string>\",\n  \"displayName\": \"Player One\",\n  \"country\": \"US\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/iam/v3/public/namespaces/{{namespace}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["iam", "v3", "public", "namespaces", "{{namespace}}", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get the current authenticated user.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/iam/v3/public/namespaces/{{namespace}}/users/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["iam", "v3", "public", "namespaces", "{{namespace}}", "users", "me"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Basic",
+      "item": [
+        {
+          "name": "Get a player's profile.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/basic/v1/public/namespaces/{{namespace}}/users/:userId/profiles",
+              "host": ["{{baseUrl}}"],
+              "path": ["basic", "v1", "public", "namespaces", "{{namespace}}", "users", ":userId", "profiles"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cloud Save",
+      "item": [
+        {
+          "name": "Get a player record by key.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cloudsave/v1/namespaces/{{namespace}}/users/:userId/records/:key",
+              "host": ["{{baseUrl}}"],
+              "path": ["cloudsave", "v1", "namespaces", "{{namespace}}", "users", ":userId", "records", ":key"],
+              "variable": [
+                { "key": "userId", "value": "<string>" },
+                { "key": "key", "value": "<string>" }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create or replace a player record.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"level\": 12,\n  \"progress\": 0.75\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cloudsave/v1/namespaces/{{namespace}}/users/:userId/records/:key",
+              "host": ["{{baseUrl}}"],
+              "path": ["cloudsave", "v1", "namespaces", "{{namespace}}", "users", ":userId", "records", ":key"],
+              "variable": [
+                { "key": "userId", "value": "<string>" },
+                { "key": "key", "value": "<string>" }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "item": [
+        {
+          "name": "List a player's stat items.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/social/v1/namespaces/{{namespace}}/users/:userId/statitems",
+              "host": ["{{baseUrl}}"],
+              "path": ["social", "v1", "namespaces", "{{namespace}}", "users", ":userId", "statitems"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bulk update a player's stat item values.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  { \"statCode\": \"kills\", \"inc\": 3 }\n]",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/social/v1/namespaces/{{namespace}}/users/:userId/statitems/value/bulk",
+              "host": ["{{baseUrl}}"],
+              "path": ["social", "v1", "namespaces", "{{namespace}}", "users", ":userId", "statitems", "value", "bulk"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Leaderboard",
+      "item": [
+        {
+          "name": "Get all-time leaderboard rankings.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leaderboard/v1/public/namespaces/{{namespace}}/leaderboards/:leaderboardCode/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["leaderboard", "v1", "public", "namespaces", "{{namespace}}", "leaderboards", ":leaderboardCode", "all"],
+              "variable": [{ "key": "leaderboardCode", "value": "<string>" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Matchmaking",
+      "item": [
+        {
+          "name": "Submit a match ticket.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matchPool\": \"default-pool\",\n  \"attributes\": {}\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/match2/v1/namespaces/{{namespace}}/match-tickets",
+              "host": ["{{baseUrl}}"],
+              "path": ["match2", "v1", "namespaces", "{{namespace}}", "match-tickets"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Session",
+      "item": [
+        {
+          "name": "Create a game session.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configurationName\": \"default\",\n  \"joinability\": \"OPEN\",\n  \"maxPlayers\": 8\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/session/v1/public/namespaces/{{namespace}}/gamesession",
+              "host": ["{{baseUrl}}"],
+              "path": ["session", "v1", "public", "namespaces", "{{namespace}}", "gamesession"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create a party session.",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/session/v1/public/namespaces/{{namespace}}/party",
+              "host": ["{{baseUrl}}"],
+              "path": ["session", "v1", "public", "namespaces", "{{namespace}}", "party"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Platform",
+      "item": [
+        {
+          "name": "Query catalog items by criteria.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/platform/public/namespaces/{{namespace}}/items/byCriteria",
+              "host": ["{{baseUrl}}"],
+              "path": ["platform", "public", "namespaces", "{{namespace}}", "items", "byCriteria"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List a user's entitlements.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/platform/public/namespaces/{{namespace}}/users/:userId/entitlements",
+              "host": ["{{baseUrl}}"],
+              "path": ["platform", "public", "namespaces", "{{namespace}}", "users", ":userId", "entitlements"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create an order (checkout).",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemId\": \"<string>\",\n  \"quantity\": 1,\n  \"currencyCode\": \"USD\",\n  \"price\": 999,\n  \"region\": \"US\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/platform/public/namespaces/{{namespace}}/users/:userId/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["platform", "public", "namespaces", "{{namespace}}", "users", ":userId", "orders"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a user's wallet for a currency.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/platform/public/namespaces/{{namespace}}/users/:userId/wallets/:currencyCode",
+              "host": ["{{baseUrl}}"],
+              "path": ["platform", "public", "namespaces", "{{namespace}}", "users", ":userId", "wallets", ":currencyCode"],
+              "variable": [
+                { "key": "userId", "value": "<string>" },
+                { "key": "currencyCode", "value": "VC" }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Season Pass",
+      "item": [
+        {
+          "name": "Get the player's progression in the current season.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/seasonpass/v1/public/namespaces/{{namespace}}/seasons/current/progression",
+              "host": ["{{baseUrl}}"],
+              "path": ["seasonpass", "v1", "public", "namespaces", "{{namespace}}", "seasons", "current", "progression"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Achievement",
+      "item": [
+        {
+          "name": "List a player's achievements.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/achievement/v1/public/namespaces/{{namespace}}/users/:userId/achievements",
+              "host": ["{{baseUrl}}"],
+              "path": ["achievement", "v1", "public", "namespaces", "{{namespace}}", "users", ":userId", "achievements"],
+              "variable": [{ "key": "userId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DSMC",
+      "item": [
+        {
+          "name": "Claim a ready dedicated server.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"<string>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dsmcontroller/namespaces/{{namespace}}/servers/claim",
+              "host": ["{{baseUrl}}"],
+              "path": ["dsmcontroller", "namespaces", "{{namespace}}", "servers", "claim"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Game Telemetry",
+      "item": [
+        {
+          "name": "Save a batch of telemetry events.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"EventNamespace\": \"{{namespace}}\",\n    \"EventName\": \"level_completed\",\n    \"Payload\": { \"level\": 3 }\n  }\n]",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/game-telemetry/v1/protected/events",
+              "host": ["{{baseUrl}}"],
+              "path": ["game-telemetry", "v1", "protected", "events"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "UGC",
+      "item": [
+        {
+          "name": "Create UGC content in a channel.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Map\",\n  \"type\": \"map\",\n  \"fileExtension\": \"json\",\n  \"tags\": [\"pvp\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ugc/v1/public/namespaces/{{namespace}}/channels/:channelId/contents/s3",
+              "host": ["{{baseUrl}}"],
+              "path": ["ugc", "v1", "public", "namespaces", "{{namespace}}", "channels", ":channelId", "contents", "s3"],
+              "variable": [{ "key": "channelId", "value": "<string>" }]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

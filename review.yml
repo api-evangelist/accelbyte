@@ -1,0 +1,91 @@
+aid: accelbyte
+name: AccelByte
+review:
+  question: Does AccelByte expose a documented public WebSocket API?
+  answer: true
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    AccelByte's Lobby service exposes a real-time WebSocket surface used by
+    the SDKs for presence, friends, chat, notifications, and party/session
+    signaling. This review records that the WebSocket surface exists; an
+    AsyncAPI document was not authored in this pass because the public,
+    machine-readable WebSocket message contract is delivered primarily
+    through the AccelByte SDKs rather than a standalone published schema.
+    The apis.yml models the documented REST services only.
+findings:
+  summary: |
+    AccelByte Gaming Services (AGS) is delivered as a set of REST
+    microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard,
+    Matchmaking, Session, Platform/Commerce, Season Pass, Achievement,
+    DSMC/Armada, Game Telemetry, UGC), each mounted under its own path
+    prefix on the environment base URL (e.g. https://demo.accelbyte.io) and
+    secured with OAuth2 Bearer access tokens issued by IAM. In addition to
+    REST, the Lobby service provides a persistent WebSocket connection that
+    the client SDKs use for presence, friends, chat, notifications, and
+    real-time party/session events. AGS is a commercial B2B platform; the
+    shared https://demo.accelbyte.io environment is used for evaluation,
+    while production traffic runs against provisioned per-customer
+    environments.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://demo.accelbyte.io
+      documented: true
+      note: Each service under its own path prefix (/iam, /basic, /cloudsave, /social, /leaderboard, /match2, /session, /platform, /seasonpass, /achievement, /dsmcontroller, /game-telemetry, /ugc).
+    - protocol: WebSocket
+      scheme: wss
+      documented: true
+      note: Lobby real-time connection for presence, friends, chat, notifications, and party/session signaling, consumed via the AccelByte SDKs.
+  auth:
+    scheme: OAuth2
+    tokenEndpoint: https://demo.accelbyte.io/iam/v3/oauth/token
+    grants:
+      - client_credentials
+      - authorization_code
+      - refresh_token
+      - token-exchange (platform login / account linking)
+    tokenType: Bearer (JWT)
+    note: Client id/secret authenticate at the token endpoint (HTTP Basic); nearly all resource operations are scoped to a namespace.
+  endpointsConfirmedRest:
+    - POST https://demo.accelbyte.io/iam/v3/oauth/token
+    - POST https://demo.accelbyte.io/iam/v3/public/namespaces/{namespace}/users
+    - GET  https://demo.accelbyte.io/iam/v3/public/namespaces/{namespace}/users/me
+    - GET  https://demo.accelbyte.io/basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+    - GET  https://demo.accelbyte.io/cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+    - GET  https://demo.accelbyte.io/social/v1/namespaces/{namespace}/users/{userId}/statitems
+    - GET  https://demo.accelbyte.io/leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/all
+    - POST https://demo.accelbyte.io/match2/v1/namespaces/{namespace}/match-tickets
+    - POST https://demo.accelbyte.io/session/v1/public/namespaces/{namespace}/gamesession
+    - GET  https://demo.accelbyte.io/platform/public/namespaces/{namespace}/items/byCriteria
+    - POST https://demo.accelbyte.io/platform/public/namespaces/{namespace}/users/{userId}/orders
+    - GET  https://demo.accelbyte.io/seasonpass/v1/public/namespaces/{namespace}/seasons/current/progression
+    - GET  https://demo.accelbyte.io/achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
+    - POST https://demo.accelbyte.io/dsmcontroller/namespaces/{namespace}/servers/claim
+    - POST https://demo.accelbyte.io/game-telemetry/v1/protected/events
+    - POST https://demo.accelbyte.io/ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents/s3
+sources:
+  - url: https://docs.accelbyte.io/
+    type: Documentation
+    note: AGS service documentation, organized by Access, Social, Engagement, Play, Monetization, Analytics, and AGS Cloud areas.
+  - url: https://docs.accelbyte.io/api-explorer/
+    type: APIReference
+    note: Interactive API Explorer for the per-service REST specs.
+  - url: https://github.com/AccelByte
+    type: SourceCode
+    note: Public SDKs (Go, C#/Unity, C++/Unreal, Python, JS) and OpenAPI-generated clients.
+  - url: https://accelbyte.io/products
+    type: Website
+    note: Product overview of the online services and AGS Cloud dedicated server offering.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    Catalogued the twelve documented REST service surfaces of AGS in
+    apis.yml. The Lobby WebSocket surface is noted here for completeness but
+    was not modeled as AsyncAPI in this pass because its message contract is
+    distributed via the AccelByte SDKs rather than a standalone public schema.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

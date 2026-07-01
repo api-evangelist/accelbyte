@@ -1,0 +1,116 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: AccelByte
+providerId: accelbyte
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Gaming
+- Backend
+- BaaS
+- Live Services
+- Commerce
+- Plans
+description: >-
+  AccelByte Gaming Services (AGS) is sold as a commercial B2B platform, not a
+  self-serve metered API. Pricing is quote-based and negotiated with AccelByte
+  sales, typically structured around Monthly Active Users (MAU) / Monthly Tracked
+  Users and the mix of services and infrastructure (AGS Cloud vs. AGS Private /
+  self-hosted). There is no published public per-request price list; the plan
+  structure below reflects AccelByte's productized offerings rather than
+  reconciled dollar figures.
+notes: >-
+  Values are not reconciled to published dollar amounts because AccelByte does
+  not publish a public price list. Confirm current packaging (AGS Starter, AGS
+  Cloud, AGS Private) and MAU-based commercials with AccelByte sales on
+  reconciliation.
+sources:
+- https://accelbyte.io/pricing
+- https://accelbyte.io/products
+- https://docs.accelbyte.io/
+plans:
+- id: accelbyte-ags-starter
+  name: AGS Starter
+  type: subscription
+  description: >-
+    Entry offering for smaller studios and prototypes bundling the core AGS
+    online services on AccelByte-managed cloud infrastructure.
+  entries:
+  - label: Monthly Active Users
+    name: mau
+    type: usage
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (MAU-based)
+    userMultiplied: true
+  elements:
+  - name: IAM / Player Accounts
+  - name: Cloud Save
+  - name: Statistics & Leaderboard
+  - name: Achievements
+  - name: Commerce
+- id: accelbyte-ags-cloud
+  name: AGS Cloud
+  type: subscription
+  description: >-
+    Fully managed AGS with the complete online services suite plus AGS Cloud
+    (Armada) dedicated server orchestration, hosted and operated by AccelByte.
+  entries:
+  - label: Monthly Active Users
+    name: mau
+    type: usage
+    metric: users
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (MAU-based)
+    userMultiplied: true
+  - label: Dedicated Server Compute
+    name: ds_compute
+    type: usage
+    metric: server_hours
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (infrastructure pass-through)
+    userMultiplied: false
+  elements:
+  - name: All Online Services
+  - name: Matchmaking
+  - name: Session & Lobby
+  - name: Seasons / Battle Pass
+  - name: UGC
+  - name: Analytics & Telemetry
+  - name: Armada Dedicated Servers
+- id: accelbyte-ags-private
+  name: AGS Private (Self-Hosted)
+  type: enterprise
+  description: >-
+    Source-available / self-hosted deployment of AGS into the customer's own
+    cloud, with enterprise licensing, support, and professional services.
+  entries:
+  - label: Enterprise License
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Self-Hosted AGS
+  - name: Enterprise Support
+  - name: Professional Services
+  - name: Custom SLA
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
