@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/accelbyte-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth2 access token issued by the IAM token endpoint.
+  sources:
+  - openapi/accelbyte-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: OAuth2 client id / client secret used at the token endpoint.
+  sources:
+  - openapi/accelbyte-openapi.yml

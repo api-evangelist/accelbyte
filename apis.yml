@@ -280,6 +280,10 @@ apis:
   description: User-Generated Content - lets players create, upload, tag, share, like,
     and download content (channels, contents, and metadata) with moderation hooks.
 common:
+- type: DomainSecurity
+  url: security/accelbyte-domain-security.yml
+- type: Authentication
+  url: authentication/accelbyte-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/AccelByte
 - type: LinkedIn
@@ -294,6 +298,8 @@ common:
   url: rate-limits/accelbyte-rate-limits.yml
 - type: FinOps
   url: finops/accelbyte-finops.yml
+- type: Blog
+  url: https://accelbyte.io/blog/rss.xml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
