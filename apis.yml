@@ -280,6 +280,8 @@ apis:
   description: User-Generated Content - lets players create, upload, tag, share, like,
     and download content (channels, contents, and metadata) with moderation hooks.
 common:
+- type: AgenticAccess
+  url: agentic-access/accelbyte-agentic-access.yml
 - type: DomainSecurity
   url: security/accelbyte-domain-security.yml
 - type: Authentication

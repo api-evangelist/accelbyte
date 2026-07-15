@@ -1,0 +1,328 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/accelbyte-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 23
+  by_action_class:
+    acting: 13
+    connected: 10
+  by_consequence:
+    write: 11
+    read: 10
+    physical: 1
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /iam/v3/oauth/token
+  method: post
+  operationId: iamGetToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /iam/v3/public/namespaces/{namespace}/users
+  method: post
+  operationId: iamCreateUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /iam/v3/public/namespaces/{namespace}/users/me
+  method: get
+  operationId: iamGetMyUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+  method: get
+  operationId: basicGetUserProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /basic/v1/public/namespaces/{namespace}/users/{userId}/profiles
+  method: put
+  operationId: basicUpdateUserProfile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+  method: get
+  operationId: cloudSaveGetPlayerRecord
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /cloudsave/v1/namespaces/{namespace}/users/{userId}/records/{key}
+  method: post
+  operationId: cloudSaveCreatePlayerRecord
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /social/v1/namespaces/{namespace}/users/{userId}/statitems
+  method: get
+  operationId: statisticsGetUserStatItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /social/v1/namespaces/{namespace}/users/{userId}/statitems/value/bulk
+  method: put
+  operationId: statisticsBulkUpdateStatItems
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/all
+  method: get
+  operationId: leaderboardGetAllTimeRanking
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /match2/v1/namespaces/{namespace}/match-tickets
+  method: post
+  operationId: matchmakingCreateTicket
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /match2/v1/namespaces/{namespace}/match-tickets/{ticketId}
+  method: delete
+  operationId: matchmakingDeleteTicket
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/v1/public/namespaces/{namespace}/gamesession
+  method: post
+  operationId: sessionCreateGameSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /session/v1/public/namespaces/{namespace}/party
+  method: post
+  operationId: sessionCreateParty
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /platform/public/namespaces/{namespace}/items/byCriteria
+  method: get
+  operationId: platformQueryItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /platform/public/namespaces/{namespace}/users/{userId}/entitlements
+  method: get
+  operationId: platformGetUserEntitlements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /platform/public/namespaces/{namespace}/users/{userId}/orders
+  method: post
+  operationId: platformCreateOrder
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}
+  method: get
+  operationId: platformGetUserWallet
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /seasonpass/v1/public/namespaces/{namespace}/seasons/current/progression
+  method: get
+  operationId: seasonPassGetCurrentProgression
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements
+  method: get
+  operationId: achievementListUserAchievements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /dsmcontroller/namespaces/{namespace}/servers/claim
+  method: post
+  operationId: dsmcClaimServer
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /game-telemetry/v1/protected/events
+  method: post
+  operationId: telemetrySaveEvents
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /ugc/v1/public/namespaces/{namespace}/channels/{channelId}/contents/s3
+  method: post
+  operationId: ugcCreateContent
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
