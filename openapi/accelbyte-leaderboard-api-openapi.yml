@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement Leaderboard API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: Leaderboard
+  description: Ranked leaderboards derived from statistics.
+paths:
+  /leaderboard/v1/public/namespaces/{namespace}/leaderboards/{leaderboardCode}/all:
+    get:
+      operationId: leaderboardGetAllTimeRanking
+      tags:
+      - Leaderboard
+      summary: Get all-time leaderboard rankings.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - name: leaderboardCode
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Ranked entries.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeaderboardRankingResult'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  schemas:
+    RankingEntry:
+      type: object
+      properties:
+        userId:
+          type: string
+        rank:
+          type: integer
+        point:
+          type: number
+    LeaderboardRankingResult:
+      type: object
+      properties:
+        leaderboardCode:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RankingEntry'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.

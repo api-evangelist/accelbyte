@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: Achievement
+  description: Achievement definitions and player unlocks.
+paths:
+  /achievement/v1/public/namespaces/{namespace}/users/{userId}/achievements:
+    get:
+      operationId: achievementListUserAchievements
+      tags:
+      - Achievement
+      summary: List a player's achievements.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of user achievements.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAchievementPagedResponse'
+components:
+  schemas:
+    UserAchievement:
+      type: object
+      properties:
+        achievementCode:
+          type: string
+        name:
+          type: string
+        status:
+          type: integer
+          description: 1 = in progress, 2 = unlocked.
+        latestValue:
+          type: number
+        achievedAt:
+          type: string
+          format: date-time
+    UserAchievementPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAchievement'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.

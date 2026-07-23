@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement Season Pass API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: Season Pass
+  description: Seasons, passes, tiers, and rewards.
+paths:
+  /seasonpass/v1/public/namespaces/{namespace}/seasons/current/progression:
+    get:
+      operationId: seasonPassGetCurrentProgression
+      tags:
+      - Season Pass
+      summary: Get the player's progression in the current season.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      responses:
+        '200':
+          description: Current season progression.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSeasonProgression'
+components:
+  schemas:
+    UserSeasonProgression:
+      type: object
+      properties:
+        seasonId:
+          type: string
+        userId:
+          type: string
+        currentTierIndex:
+          type: integer
+        currentExp:
+          type: integer
+        requiredExp:
+          type: integer
+        passes:
+          type: array
+          items:
+            type: string
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.

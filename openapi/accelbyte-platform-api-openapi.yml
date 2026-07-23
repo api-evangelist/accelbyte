@@ -1,0 +1,293 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement Platform API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: Platform
+  description: Commerce - stores, items, entitlements, wallets, orders.
+paths:
+  /platform/public/namespaces/{namespace}/items/byCriteria:
+    get:
+      operationId: platformQueryItems
+      tags:
+      - Platform
+      summary: Query catalog items by criteria.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - name: storeId
+        in: query
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of catalog items.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemPagedResponse'
+  /platform/public/namespaces/{namespace}/users/{userId}/entitlements:
+    get:
+      operationId: platformGetUserEntitlements
+      tags:
+      - Platform
+      summary: List a user's entitlements.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: A page of entitlements.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitlementPagedResponse'
+  /platform/public/namespaces/{namespace}/users/{userId}/orders:
+    post:
+      operationId: platformCreateOrder
+      tags:
+      - Platform
+      summary: Create an order (checkout).
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        '201':
+          description: Order created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /platform/public/namespaces/{namespace}/users/{userId}/wallets/{currencyCode}:
+    get:
+      operationId: platformGetUserWallet
+      tags:
+      - Platform
+      summary: Get a user's wallet for a currency.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      - $ref: '#/components/parameters/UserId'
+      - name: currencyCode
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The wallet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  schemas:
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        currencyCode:
+          type: string
+        balance:
+          type: integer
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    OrderRequest:
+      type: object
+      properties:
+        itemId:
+          type: string
+        quantity:
+          type: integer
+        currencyCode:
+          type: string
+        price:
+          type: integer
+        region:
+          type: string
+      required:
+      - itemId
+      - quantity
+    Entitlement:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        itemId:
+          type: string
+        sku:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CONSUMED
+          - REVOKED
+        useCount:
+          type: integer
+    RegionPrice:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencyType:
+          type: string
+          enum:
+          - REAL
+          - VIRTUAL
+        price:
+          type: integer
+        discountedPrice:
+          type: integer
+    Order:
+      type: object
+      properties:
+        orderNo:
+          type: string
+        userId:
+          type: string
+        itemId:
+          type: string
+        status:
+          type: string
+          enum:
+          - INIT
+          - CHARGED
+          - CHARGEBACK
+          - FULFILLED
+          - REFUNDED
+          - CLOSED
+        price:
+          type: integer
+        currency:
+          $ref: '#/components/schemas/RegionPrice'
+    EntitlementPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entitlement'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Item:
+      type: object
+      properties:
+        itemId:
+          type: string
+        namespace:
+          type: string
+        sku:
+          type: string
+        name:
+          type: string
+        itemType:
+          type: string
+          enum:
+          - APP
+          - COINS
+          - INGAMEITEM
+          - BUNDLE
+          - CODE
+          - SUBSCRIPTION
+          - SEASON
+          - MEDIA
+          - OPTIONBOX
+        regionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionPrice'
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        total:
+          type: integer
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.

@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement IAM API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: IAM
+  description: Identity and Access Management - OAuth2 tokens, users, roles.
+paths:
+  /iam/v3/oauth/token:
+    post:
+      operationId: iamGetToken
+      tags:
+      - IAM
+      summary: Issue an OAuth2 access token.
+      description: OAuth2 token endpoint. Supports `client_credentials` for server-to-server access, `authorization_code` for player login flows, and `urn:ietf:params:oauth:grant-type:token-exchange` / platform token exchange for linking third-party platform accounts. Clients authenticate with HTTP Basic (client id / client secret).
+      security:
+      - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - grant_type
+              properties:
+                grant_type:
+                  type: string
+                  enum:
+                  - client_credentials
+                  - authorization_code
+                  - refresh_token
+                  - urn:ietf:params:oauth:grant-type:token-exchange
+                  example: client_credentials
+                code:
+                  type: string
+                  description: Authorization code (authorization_code grant).
+                redirect_uri:
+                  type: string
+                refresh_token:
+                  type: string
+                code_verifier:
+                  type: string
+                  description: PKCE code verifier.
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /iam/v3/public/namespaces/{namespace}/users:
+    post:
+      operationId: iamCreateUser
+      tags:
+      - IAM
+      summary: Register a new user account.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: User created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /iam/v3/public/namespaces/{namespace}/users/me:
+    get:
+      operationId: iamGetMyUser
+      tags:
+      - IAM
+      summary: Get the current authenticated user.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      responses:
+        '200':
+          description: The current user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        emailAddress:
+          type: string
+        displayName:
+          type: string
+        country:
+          type: string
+        emailVerified:
+          type: boolean
+    CreateUserRequest:
+      type: object
+      properties:
+        authType:
+          type: string
+          enum:
+          - EMAILPASSWD
+          default: EMAILPASSWD
+        emailAddress:
+          type: string
+          format: email
+        password:
+          type: string
+        displayName:
+          type: string
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        dateOfBirth:
+          type: string
+          format: date
+      required:
+      - authType
+      - emailAddress
+      - password
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        namespace:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - token_type
+      - expires_in
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.

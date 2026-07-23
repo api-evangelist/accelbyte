@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: AccelByte Gaming Services (AGS) Achievement DSMC API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  termsOfService: https://accelbyte.io/terms-of-service
+  contact:
+    name: AccelByte
+    url: https://accelbyte.io/contact-us
+  version: '1.0'
+servers:
+- url: https://demo.accelbyte.io
+  description: Shared AccelByte demo environment
+- url: https://{namespace}.accelbyte.io
+  description: Customer environment base URL
+  variables:
+    namespace:
+      default: demo
+      description: Customer environment host prefix
+security:
+- bearerAuth: []
+tags:
+- name: DSMC
+  description: Dedicated Server Manager (Armada) fleets and sessions.
+paths:
+  /dsmcontroller/namespaces/{namespace}/servers/claim:
+    post:
+      operationId: dsmcClaimServer
+      tags:
+      - DSMC
+      summary: Claim a ready dedicated server.
+      parameters:
+      - $ref: '#/components/parameters/Namespace'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimServerRequest'
+      responses:
+        '200':
+          description: Claimed server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DedicatedServer'
+components:
+  schemas:
+    DedicatedServer:
+      type: object
+      properties:
+        pod_name:
+          type: string
+        namespace:
+          type: string
+        ip:
+          type: string
+        port:
+          type: integer
+        region:
+          type: string
+        status:
+          type: string
+          enum:
+          - CREATING
+          - READY
+          - BUSY
+          - REMOVING
+    ClaimServerRequest:
+      type: object
+      properties:
+        session_id:
+          type: string
+      required:
+      - session_id
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 access token issued by the IAM token endpoint.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: OAuth2 client id / client secret used at the token endpoint.
