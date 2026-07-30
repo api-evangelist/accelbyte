@@ -8,7 +8,20 @@ description: AccelByte provides AccelByte Gaming Services (AGS), a modular backe
   commerce and monetization, seasons and battle pass, achievements, dedicated server
   management (Armada/DSMC), analytics and telemetry, and user-generated content, all
   secured with OAuth2 client credentials and namespace-scoped IAM.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/accelbyte.png
 tags:
 - Gaming
 - Backend
@@ -20,265 +33,578 @@ created: '2026-07-01'
 modified: '2026-07-01'
 specificationVersion: '0.19'
 apis:
-- aid: accelbyte:accelbyte-iam-api
-  name: AccelByte IAM API
-  tags:
-  - IAM
-  - Identity
-  - OAuth2
-  - Authentication
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
-  baseURL: https://demo.accelbyte.io/iam
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/access/
-    type: Documentation
-  - url: https://docs.accelbyte.io/api-explorer/
-    type: APIReference
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Identity and Access Management - user registration and login, OAuth2
-    token issuance (client credentials, authorization code, platform token exchange),
-    JWT verification, roles, permissions, and third-party platform account linking,
-    all scoped to a namespace.
-- aid: accelbyte:accelbyte-basic-api
-  name: AccelByte Basic (Player Profile) API
-  tags:
-  - Player Profile
-  - Basic
-  - User Data
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/social/basic/
-  baseURL: https://demo.accelbyte.io/basic
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/social/basic/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Player profiles, namespaces, files/avatar storage, and misc user-facing
-    metadata that games attach to a player identity.
-- aid: accelbyte:accelbyte-cloudsave-api
-  name: AccelByte Cloud Save API
-  tags:
-  - Cloud Save
-  - Player Data
-  - Records
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
-  baseURL: https://demo.accelbyte.io/cloudsave
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Stores and retrieves game and player data as JSON records - player records,
-    game records, and public/private key-value state that persists across sessions
-    and devices.
-- aid: accelbyte:accelbyte-statistics-api
-  name: AccelByte Statistics & Leaderboard API
-  tags:
-  - Statistics
-  - Leaderboard
-  - Stats
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
-  baseURL: https://demo.accelbyte.io/social
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
-    type: Documentation
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Defines stat configurations, records player stat items, and exposes
-    ranked leaderboards (all-time, weekly, monthly) built on top of tracked statistics.
-- aid: accelbyte:accelbyte-matchmaking-api
-  name: AccelByte Matchmaking API
-  tags:
-  - Matchmaking
-  - Match
-  - Sessions
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
-  baseURL: https://demo.accelbyte.io/match2
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Rule-based matchmaking (Matchmaking V2) - create and manage match pools,
-    submit match tickets, and produce balanced match sessions handed off to the session
-    service.
-- aid: accelbyte:accelbyte-session-api
-  name: AccelByte Lobby & Session API
-  tags:
-  - Session
-  - Lobby
-  - Party
-  - Presence
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/play/session/
-  baseURL: https://demo.accelbyte.io/session
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/play/session/
-    type: Documentation
-  - url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Game sessions and parties (Session V2) plus lobby features - party
-    management, friends, presence, and chat coordination for players before and during
-    a match.
-- aid: accelbyte:accelbyte-platform-api
-  name: AccelByte Commerce (Platform) API
-  tags:
-  - Commerce
-  - Monetization
-  - Store
-  - Entitlement
-  - Wallet
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/monetization/
-  baseURL: https://demo.accelbyte.io/platform
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/monetization/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: In-game commerce and monetization - catalog/stores, items, entitlements,
-    wallets and virtual currencies, orders and checkout, fulfillment, and integrations
-    with real-money payment gateways.
-- aid: accelbyte:accelbyte-seasonpass-api
-  name: AccelByte Seasons & Battle Pass API
-  tags:
-  - Seasons
-  - Battle Pass
-  - Rewards
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
-  baseURL: https://demo.accelbyte.io/seasonpass
-  properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Season Pass / Battle Pass - define seasons, tiers, passes, and rewards,
-    grant experience, and track player progression and claimed rewards across a season.
 - aid: accelbyte:accelbyte-achievement-api
   name: AccelByte Achievement API
+  description: Achievement definitions and player unlocks.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
   tags:
-  - Achievements
-  - Trophies
-  - Progression
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
-  baseURL: https://demo.accelbyte.io/achievement
+  - Achievement
   properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Achievement definitions (incremental and standard), player unlock tracking,
-    and tie-ins with statistics so achievements progress automatically as stats change.
+  - type: OpenAPI
+    url: openapi/accelbyte-achievement-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-basic-api
+  name: AccelByte Basic API
+  description: Player profiles and basic user data.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Basic
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-basic-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-cloud-save-api
+  name: AccelByte Cloud Save API
+  description: Player and game record storage.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Cloud Save
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-cloud-save-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
 - aid: accelbyte:accelbyte-dsmc-api
-  name: AccelByte Dedicated Server (Armada/DSMC) API
+  name: AccelByte DSMC API
+  description: Dedicated Server Manager (Armada) fleets and sessions.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
   tags:
-  - Dedicated Servers
   - DSMC
-  - Armada
-  - Fleet
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
-  baseURL: https://demo.accelbyte.io/dsmcontroller
   properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Dedicated Server Manager (Armada/DSMC) - register and manage dedicated
-    game server fleets, claim and release server sessions, and orchestrate multi-region
-    server scaling for session-based games.
-- aid: accelbyte:accelbyte-analytics-api
-  name: AccelByte Analytics & Telemetry API
+  - type: OpenAPI
+    url: openapi/accelbyte-dsmc-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-game-telemetry-api
+  name: AccelByte Game Telemetry API
+  description: Gameplay and client telemetry ingestion.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
   tags:
-  - Analytics
-  - Telemetry
-  - Events
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
-  baseURL: https://demo.accelbyte.io/game-telemetry
+  - Game Telemetry
   properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: Game Telemetry - ingest gameplay and client telemetry events (single
-    and batched) for the analytics pipeline, feeding dashboards and downstream data
-    exports.
+  - type: OpenAPI
+    url: openapi/accelbyte-game-telemetry-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-iam-api
+  name: AccelByte IAM API
+  description: Identity and Access Management - OAuth2 tokens, users, roles.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - IAM
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-iam-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-leaderboard-api
+  name: AccelByte Leaderboard API
+  description: Ranked leaderboards derived from statistics.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Leaderboard
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-leaderboard-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-matchmaking-api
+  name: AccelByte Matchmaking API
+  description: Matchmaking V2 pools and tickets.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Matchmaking
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-matchmaking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-platform-api
+  name: AccelByte Platform API
+  description: Commerce - stores, items, entitlements, wallets, orders.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-platform-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-season-pass-api
+  name: AccelByte Season Pass API
+  description: Seasons, passes, tiers, and rewards.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Season Pass
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-season-pass-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-session-api
+  name: AccelByte Session API
+  description: Game sessions and parties (Session V2).
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-session-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
+- aid: accelbyte:accelbyte-statistics-api
+  name: AccelByte Statistics API
+  description: Player statistics and configurations.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
+  tags:
+  - Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/accelbyte-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
 - aid: accelbyte:accelbyte-ugc-api
   name: AccelByte UGC API
+  description: User-generated content channels and contents.
+  humanURL: https://docs.accelbyte.io/gaming-services/services/access/
+  baseURL: https://demo.accelbyte.io/iam
   tags:
   - UGC
-  - User Generated Content
-  - Content
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
-  baseURL: https://demo.accelbyte.io/ugc
   properties:
-  - url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
-    type: Documentation
-  - url: openapi/accelbyte-openapi.yml
-    type: OpenAPI
-  - url: collections/accelbyte.postman_collection.json
-    type: PostmanCollection
-  - url: collections/accelbyte.opencollection.json
-    type: OpenCollection
-  description: User-Generated Content - lets players create, upload, tag, share, like,
-    and download content (channels, contents, and metadata) with moderation hooks.
+  - type: OpenAPI
+    url: openapi/accelbyte-ugc-api-openapi.yml
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/access/
+  - type: APIReference
+    url: https://docs.accelbyte.io/api-explorer/
+  - type: PostmanCollection
+    url: collections/accelbyte.postman_collection.json
+  - type: OpenCollection
+    url: collections/accelbyte.opencollection.json
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/social/basic/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/statistics/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/matchmaking/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/session/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/play/lobby/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/monetization/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/achievement/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/
+  - type: Documentation
+    url: https://docs.accelbyte.io/gaming-services/services/engagement/ugc/
 common:
 - type: AgenticAccess
   url: agentic-access/accelbyte-agentic-access.yml
