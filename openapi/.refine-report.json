@@ -1,0 +1,38 @@
+{
+  "provider": "accelbyte",
+  "sources": [
+    "accelbyte-achievement-api-openapi.yml",
+    "accelbyte-basic-api-openapi.yml",
+    "accelbyte-cloud-save-api-openapi.yml",
+    "accelbyte-dsmc-api-openapi.yml",
+    "accelbyte-game-telemetry-api-openapi.yml",
+    "accelbyte-iam-api-openapi.yml",
+    "accelbyte-leaderboard-api-openapi.yml",
+    "accelbyte-matchmaking-api-openapi.yml",
+    "accelbyte-platform-api-openapi.yml",
+    "accelbyte-season-pass-api-openapi.yml",
+    "accelbyte-session-api-openapi.yml",
+    "accelbyte-statistics-api-openapi.yml",
+    "accelbyte-ugc-api-openapi.yml"
+  ],
+  "outputs": [
+    "accelbyte-achievement-api-openapi.yml",
+    "accelbyte-basic-api-openapi.yml",
+    "accelbyte-cloud-save-api-openapi.yml",
+    "accelbyte-dsmc-api-openapi.yml",
+    "accelbyte-game-telemetry-api-openapi.yml",
+    "accelbyte-iam-api-openapi.yml",
+    "accelbyte-leaderboard-api-openapi.yml",
+    "accelbyte-matchmaking-api-openapi.yml",
+    "accelbyte-platform-api-openapi.yml",
+    "accelbyte-season-pass-api-openapi.yml",
+    "accelbyte-session-api-openapi.yml",
+    "accelbyte-statistics-api-openapi.yml",
+    "accelbyte-ugc-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
