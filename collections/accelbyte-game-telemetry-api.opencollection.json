@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Game Telemetry API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Game Telemetry",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Save a batch of telemetry events.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/game-telemetry/v1/protected/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Save a batch of telemetry events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

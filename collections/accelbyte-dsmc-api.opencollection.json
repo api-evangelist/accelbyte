@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement DSMC API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DSMC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Claim a ready dedicated server.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/dsmcontroller/namespaces/:namespace/servers/claim",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim a ready dedicated server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

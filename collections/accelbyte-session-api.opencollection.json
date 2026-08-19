@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Session API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a game session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/session/v1/public/namespaces/:namespace/gamesession",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a game session."
+        },
+        {
+          "info": {
+            "name": "Create a party session.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/session/v1/public/namespaces/:namespace/party",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              }
+            ]
+          },
+          "docs": "Create a party session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

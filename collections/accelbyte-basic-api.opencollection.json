@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Basic API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Basic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a player's profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/basic/v1/public/namespaces/:namespace/users/:userId/profiles",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a player's profile."
+        },
+        {
+          "info": {
+            "name": "Update a player's profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://demo.accelbyte.io/basic/v1/public/namespaces/:namespace/users/:userId/profiles",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a player's profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

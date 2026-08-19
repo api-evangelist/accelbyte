@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Season Pass API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Season Pass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the player's progression in the current season.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/seasonpass/v1/public/namespaces/:namespace/seasons/current/progression",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              }
+            ]
+          },
+          "docs": "Get the player's progression in the current season."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

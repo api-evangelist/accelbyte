@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Cloud Save API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cloud Save",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a player record by key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/cloudsave/v1/namespaces/:namespace/users/:userId/records/:key",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a player record by key."
+        },
+        {
+          "info": {
+            "name": "Create or replace a player record.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/cloudsave/v1/namespaces/:namespace/users/:userId/records/:key",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or replace a player record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

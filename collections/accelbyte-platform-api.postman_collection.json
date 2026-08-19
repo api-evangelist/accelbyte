@@ -1,0 +1,579 @@
+{
+  "item": [
+    {
+      "id": "6df3e36f-f59e-488b-8409-e8e2d28fa6e0",
+      "name": "Platform",
+      "description": {
+        "content": "Commerce - stores, items, entitlements, wallets, orders.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "163d192e-0f70-42e1-a2d8-16a7dc70937f",
+          "name": "Query catalog items by criteria.",
+          "request": {
+            "name": "Query catalog items by criteria.",
+            "description": {},
+            "url": {
+              "path": [
+                "platform",
+                "public",
+                "namespaces",
+                ":namespace",
+                "items",
+                "byCriteria"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33b47f3b-5724-4dfd-8449-55dedf5b1b8d",
+              "name": "A page of catalog items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platform",
+                    "public",
+                    "namespaces",
+                    ":namespace",
+                    "items",
+                    "byCriteria"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "storeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"itemId\": \"string\",\n      \"namespace\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"itemType\": \"SUBSCRIPTION\",\n      \"regionData\": [\n        {\n          \"currencyCode\": \"string\",\n          \"currencyType\": \"REAL\",\n          \"price\": 9791,\n          \"discountedPrice\": 9407\n        },\n        {\n          \"currencyCode\": \"string\",\n          \"currencyType\": \"REAL\",\n          \"price\": 3877,\n          \"discountedPrice\": 9544\n        }\n      ]\n    },\n    {\n      \"itemId\": \"string\",\n      \"namespace\": \"string\",\n      \"sku\": \"string\",\n      \"name\": \"string\",\n      \"itemType\": \"APP\",\n      \"regionData\": [\n        {\n          \"currencyCode\": \"string\",\n          \"currencyType\": \"VIRTUAL\",\n          \"price\": 6304,\n          \"discountedPrice\": 4086\n        },\n        {\n          \"currencyCode\": \"string\",\n          \"currencyType\": \"REAL\",\n          \"price\": 4111,\n          \"discountedPrice\": 8209\n        }\n      ]\n    }\n  ],\n  \"paging\": {\n    \"previous\": \"string\",\n    \"next\": \"string\"\n  },\n  \"total\": 410\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51fb4240-1f85-4573-babe-6b8e9559e469",
+          "name": "List a user's entitlements.",
+          "request": {
+            "name": "List a user's entitlements.",
+            "description": {},
+            "url": {
+              "path": [
+                "platform",
+                "public",
+                "namespaces",
+                ":namespace",
+                "users",
+                ":userId",
+                "entitlements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e3d745e-a55a-43ac-8e2e-b0dc8e0eb947",
+              "name": "A page of entitlements.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platform",
+                    "public",
+                    "namespaces",
+                    ":namespace",
+                    "users",
+                    ":userId",
+                    "entitlements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"userId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"status\": \"ACTIVE\",\n      \"useCount\": 9588\n    },\n    {\n      \"id\": \"string\",\n      \"namespace\": \"string\",\n      \"userId\": \"string\",\n      \"itemId\": \"string\",\n      \"sku\": \"string\",\n      \"status\": \"ACTIVE\",\n      \"useCount\": 383\n    }\n  ],\n  \"paging\": {\n    \"previous\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "763ffc87-6053-4ca5-9495-cc9bb2929ea9",
+          "name": "Create an order (checkout).",
+          "request": {
+            "name": "Create an order (checkout).",
+            "description": {},
+            "url": {
+              "path": [
+                "platform",
+                "public",
+                "namespaces",
+                ":namespace",
+                "users",
+                ":userId",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemId\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"currencyCode\": \"<string>\",\n  \"price\": \"<integer>\",\n  \"region\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22999b5e-c5b8-4d5c-a5b2-955e74e32093",
+              "name": "Order created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platform",
+                    "public",
+                    "namespaces",
+                    ":namespace",
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"itemId\": \"<string>\",\n  \"quantity\": \"<integer>\",\n  \"currencyCode\": \"<string>\",\n  \"price\": \"<integer>\",\n  \"region\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderNo\": \"string\",\n  \"userId\": \"string\",\n  \"itemId\": \"string\",\n  \"status\": \"CLOSED\",\n  \"price\": 5696,\n  \"currency\": {\n    \"currencyCode\": \"string\",\n    \"currencyType\": \"VIRTUAL\",\n    \"price\": 6299,\n    \"discountedPrice\": 6081\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5cadfad-59c1-47e9-8c99-488fe072a1d4",
+          "name": "Get a user's wallet for a currency.",
+          "request": {
+            "name": "Get a user's wallet for a currency.",
+            "description": {},
+            "url": {
+              "path": [
+                "platform",
+                "public",
+                "namespaces",
+                ":namespace",
+                "users",
+                ":userId",
+                "wallets",
+                ":currencyCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currencyCode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa14531f-4e20-4465-ae4b-3e4821d1908f",
+              "name": "The wallet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "platform",
+                    "public",
+                    "namespaces",
+                    ":namespace",
+                    "users",
+                    ":userId",
+                    "wallets",
+                    ":currencyCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currencyCode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"namespace\": \"string\",\n  \"userId\": \"string\",\n  \"currencyCode\": \"string\",\n  \"balance\": 2209,\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://demo.accelbyte.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94c0c7dc-2602-477c-96b6-e53c0d876e03",
+    "name": "AccelByte Gaming Services (AGS) Achievement Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.\n\nContact Support:\n Name: AccelByte",
+      "type": "text/plain"
+    }
+  }
+}

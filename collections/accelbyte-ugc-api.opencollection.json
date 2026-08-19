@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement UGC API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UGC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create UGC content in a channel.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://demo.accelbyte.io/ugc/v1/public/namespaces/:namespace/channels/:channelId/contents/s3",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create UGC content in a channel."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

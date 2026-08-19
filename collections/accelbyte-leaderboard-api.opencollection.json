@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AccelByte Gaming Services (AGS) Achievement Leaderboard API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leaderboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all-time leaderboard rankings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://demo.accelbyte.io/leaderboard/v1/public/namespaces/:namespace/leaderboards/:leaderboardCode/all",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "demogame",
+                "type": "path",
+                "description": "The game namespace the request is scoped to."
+              },
+              {
+                "name": "leaderboardCode",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all-time leaderboard rankings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

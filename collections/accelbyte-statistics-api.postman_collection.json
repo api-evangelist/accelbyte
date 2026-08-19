@@ -1,0 +1,300 @@
+{
+  "item": [
+    {
+      "id": "ddca1835-87fe-4fa4-8329-5b3d3f625c37",
+      "name": "Statistics",
+      "description": {
+        "content": "Player statistics and configurations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57136afd-e232-4154-8e38-738e78e06f6d",
+          "name": "List a player's stat items.",
+          "request": {
+            "name": "List a player's stat items.",
+            "description": {},
+            "url": {
+              "path": [
+                "social",
+                "v1",
+                "namespaces",
+                ":namespace",
+                "users",
+                ":userId",
+                "statitems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb779b9-8e9d-47fe-be09-bf0795b81a58",
+              "name": "A page of stat items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "social",
+                    "v1",
+                    "namespaces",
+                    ":namespace",
+                    "users",
+                    ":userId",
+                    "statitems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"statCode\": \"string\",\n      \"userId\": \"string\",\n      \"value\": 1533.268878070736,\n      \"namespace\": \"string\"\n    },\n    {\n      \"statCode\": \"string\",\n      \"userId\": \"string\",\n      \"value\": 5043.029746169232,\n      \"namespace\": \"string\"\n    }\n  ],\n  \"paging\": {\n    \"previous\": \"string\",\n    \"next\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48a5c9b5-ca4c-4e5f-af18-a98fe7a55be2",
+          "name": "Bulk update a player's stat item values.",
+          "request": {
+            "name": "Bulk update a player's stat item values.",
+            "description": {},
+            "url": {
+              "path": [
+                "social",
+                "v1",
+                "namespaces",
+                ":namespace",
+                "users",
+                ":userId",
+                "statitems",
+                "value",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespace",
+                  "description": "(Required) The game namespace the request is scoped to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"statCode\": \"<string>\",\n    \"inc\": \"<number>\"\n  },\n  {\n    \"statCode\": \"<string>\",\n    \"inc\": \"<number>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e842df2-2348-44db-a71d-0acbbb6665b7",
+              "name": "Updated stat items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "social",
+                    "v1",
+                    "namespaces",
+                    ":namespace",
+                    "users",
+                    ":userId",
+                    "statitems",
+                    "value",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespace",
+                      "description": "(Required) The game namespace the request is scoped to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"statCode\": \"<string>\",\n    \"inc\": \"<number>\"\n  },\n  {\n    \"statCode\": \"<string>\",\n    \"inc\": \"<number>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"statCode\": \"string\",\n    \"userId\": \"string\",\n    \"value\": 6096.195598925771,\n    \"namespace\": \"string\"\n  },\n  {\n    \"statCode\": \"string\",\n    \"userId\": \"string\",\n    \"value\": 7567.615130889972,\n    \"namespace\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://demo.accelbyte.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f47b4694-1844-408f-879c-c2888ce934d3",
+    "name": "AccelByte Gaming Services (AGS) Achievement Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.\n\nContact Support:\n Name: AccelByte",
+      "type": "text/plain"
+    }
+  }
+}
