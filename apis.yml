@@ -25,6 +25,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/accelbyte.
 tags:
 - Gaming
 - Backend
+- Backend-as-a-Service
+- Live Services
+- Player Accounts
+- Commerce
+tags_raw:
+- Gaming
+- Backend
 - BaaS
 - Live Services
 - Player Accounts
