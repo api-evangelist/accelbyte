@@ -8,6 +8,18 @@ description: AccelByte provides AccelByte Gaming Services (AGS), a modular backe
   commerce and monetization, seasons and battle pass, achievements, dedicated server
   management (Armada/DSMC), analytics and telemetry, and user-generated content, all
   secured with OAuth2 client credentials and namespace-scoped IAM.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
