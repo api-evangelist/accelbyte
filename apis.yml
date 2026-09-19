@@ -35,6 +35,9 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/accelbyte.png
+x-docs-platform: docusaurus
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
 tags:
 - Gaming
 - Backend
@@ -279,6 +282,8 @@ apis:
   humanURL: https://docs.accelbyte.io/gaming-services/services/access/
   baseURL: https://demo.accelbyte.io/iam
   tags:
+  - Identity and Access Management
+  tags_raw:
   - IAM
   properties:
   - type: OpenAPI
@@ -323,6 +328,8 @@ apis:
   humanURL: https://docs.accelbyte.io/gaming-services/services/access/
   baseURL: https://demo.accelbyte.io/iam
   tags:
+  - Leaderboards
+  tags_raw:
   - Leaderboard
   properties:
   - type: OpenAPI
@@ -499,6 +506,8 @@ apis:
   humanURL: https://docs.accelbyte.io/gaming-services/services/access/
   baseURL: https://demo.accelbyte.io/iam
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
