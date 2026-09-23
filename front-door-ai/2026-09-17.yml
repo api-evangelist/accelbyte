@@ -1,0 +1,27 @@
+# Front Door AI Index — accelbyte — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: accelbyte
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: accelbyte.io
+  final_host: accelbyte.io
+  ownership: own
+  owner: accelbyte
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 5
+  host_score: 5
+  density: 4.03
+  words: 1242
+  tiers:
+    agentic: 1
+    core: 4
+    model: 0
+  ambiguous: 2
+  top_terms:
+    AI: 4
+    agent: 2
+    AI agent: 1

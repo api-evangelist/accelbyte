@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AccelByte Gaming Services (AGS) Achievement Session API
-  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface. AGS is delivered as a set of independent microservices (IAM, Basic, Cloud Save, Statistics/Leaderboard, Matchmaking, Session, Platform/Commerce, Season Pass, Achievement, DSMC/Armada, Game Telemetry, and UGC), each mounted under its own path prefix on the environment base URL (for example https://demo.accelbyte.io). Almost every operation is scoped to a `namespace` path parameter and secured with an OAuth2 Bearer access token issued by IAM. This document models a representative slice of each service rather than the exhaustive per-service specs, which AccelByte publishes individually.
+  title: AccelByte Gaming Services (AGS) Session API
+  description: Representative OpenAPI description of the core AccelByte Gaming Services (AGS) REST surface.
   termsOfService: https://accelbyte.io/terms-of-service
   contact:
     name: AccelByte
@@ -27,7 +27,7 @@ paths:
       operationId: sessionCreateGameSession
       tags:
       - Session
-      summary: Create a game session.
+      summary: Create a game session
       parameters:
       - $ref: '#/components/parameters/Namespace'
       requestBody:
@@ -48,7 +48,7 @@ paths:
       operationId: sessionCreateParty
       tags:
       - Session
-      summary: Create a party session.
+      summary: Create a party session
       parameters:
       - $ref: '#/components/parameters/Namespace'
       responses:
@@ -60,6 +60,19 @@ paths:
                 $ref: '#/components/schemas/PartySession'
 components:
   schemas:
+    PartySession:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        leaderId:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionMember'
     GameSession:
       type: object
       properties:
@@ -78,31 +91,6 @@ components:
         dsInformation:
           type: object
           additionalProperties: true
-    SessionMember:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - JOINED
-          - INVITED
-          - LEFT
-          - CONNECTED
-    PartySession:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        leaderId:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionMember'
     GameSessionRequest:
       type: object
       properties:
@@ -120,6 +108,18 @@ components:
           type: integer
       required:
       - configurationName
+    SessionMember:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - JOINED
+          - INVITED
+          - LEFT
+          - CONNECTED
   parameters:
     Namespace:
       name: namespace
