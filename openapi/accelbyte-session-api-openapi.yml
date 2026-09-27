@@ -60,6 +60,35 @@ paths:
                 $ref: '#/components/schemas/PartySession'
 components:
   schemas:
+    SessionMember:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - JOINED
+          - INVITED
+          - LEFT
+          - CONNECTED
+    GameSessionRequest:
+      type: object
+      properties:
+        configurationName:
+          type: string
+        matchPool:
+          type: string
+        joinability:
+          type: string
+          enum:
+          - OPEN
+          - CLOSED
+          - INVITE_ONLY
+        maxPlayers:
+          type: integer
+      required:
+      - configurationName
     PartySession:
       type: object
       properties:
@@ -91,35 +120,6 @@ components:
         dsInformation:
           type: object
           additionalProperties: true
-    GameSessionRequest:
-      type: object
-      properties:
-        configurationName:
-          type: string
-        matchPool:
-          type: string
-        joinability:
-          type: string
-          enum:
-          - OPEN
-          - CLOSED
-          - INVITE_ONLY
-        maxPlayers:
-          type: integer
-      required:
-      - configurationName
-    SessionMember:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - JOINED
-          - INVITED
-          - LEFT
-          - CONNECTED
   parameters:
     Namespace:
       name: namespace

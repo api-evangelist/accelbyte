@@ -66,6 +66,12 @@ paths:
                 $ref: '#/components/schemas/PlayerRecord'
 components:
   parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
     RecordKey:
       name: key
       in: path
@@ -80,24 +86,7 @@ components:
       schema:
         type: string
       example: demogame
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: AccelByte numeric error code.
-        errorMessage:
-          type: string
-      required:
-      - errorCode
-      - errorMessage
     PlayerRecord:
       type: object
       properties:
@@ -118,6 +107,17 @@ components:
         updated_at:
           type: string
           format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
   responses:
     NotFound:
       description: Resource not found.

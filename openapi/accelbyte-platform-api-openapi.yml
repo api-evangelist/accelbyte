@@ -105,16 +105,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/Wallet'
 components:
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   schemas:
-    EntitlementPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entitlement'
-        paging:
-          $ref: '#/components/schemas/Paging'
     Item:
       type: object
       properties:
@@ -142,22 +162,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RegionPrice'
-    OrderRequest:
+    Wallet:
       type: object
       properties:
-        itemId:
+        id:
           type: string
-        quantity:
-          type: integer
+        namespace:
+          type: string
+        userId:
+          type: string
         currencyCode:
           type: string
-        price:
+        balance:
           type: integer
-        region:
+        status:
           type: string
-      required:
-      - itemId
-      - quantity
+          enum:
+          - ACTIVE
+          - INACTIVE
     Entitlement:
       type: object
       properties:
@@ -194,17 +216,31 @@ components:
           type: integer
         discountedPrice:
           type: integer
-    ItemPagedResponse:
+    EntitlementPagedResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Item'
+            $ref: '#/components/schemas/Entitlement'
         paging:
           $ref: '#/components/schemas/Paging'
-        total:
+    OrderRequest:
+      type: object
+      properties:
+        itemId:
+          type: string
+        quantity:
           type: integer
+        currencyCode:
+          type: string
+        price:
+          type: integer
+        region:
+          type: string
+      required:
+      - itemId
+      - quantity
     Order:
       type: object
       properties:
@@ -234,53 +270,17 @@ components:
           type: string
         next:
           type: string
-    Wallet:
+    ItemPagedResponse:
       type: object
       properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        userId:
-          type: string
-        currencyCode:
-          type: string
-        balance:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        total:
           type: integer
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-  parameters:
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 20
   securitySchemes:
     bearerAuth:
       type: http

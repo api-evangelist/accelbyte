@@ -65,7 +65,40 @@ paths:
                 items:
                   $ref: '#/components/schemas/StatItem'
 components:
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   schemas:
+    StatItem:
+      type: object
+      properties:
+        statCode:
+          type: string
+        userId:
+          type: string
+        value:
+          type: number
+        namespace:
+          type: string
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
     StatItemUpdate:
       type: object
       properties:
@@ -86,39 +119,6 @@ components:
             $ref: '#/components/schemas/StatItem'
         paging:
           $ref: '#/components/schemas/Paging'
-    Paging:
-      type: object
-      properties:
-        previous:
-          type: string
-        next:
-          type: string
-    StatItem:
-      type: object
-      properties:
-        statCode:
-          type: string
-        userId:
-          type: string
-        value:
-          type: number
-        namespace:
-          type: string
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

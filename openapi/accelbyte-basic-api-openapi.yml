@@ -62,6 +62,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserProfile'
 components:
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   schemas:
     UserProfile:
       type: object
@@ -94,21 +109,6 @@ components:
       required:
       - errorCode
       - errorMessage
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
   responses:
     NotFound:
       description: Resource not found.

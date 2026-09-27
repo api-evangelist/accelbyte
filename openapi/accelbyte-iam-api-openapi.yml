@@ -108,75 +108,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid access token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   schemas:
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-          example: Bearer
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
-        namespace:
-          type: string
-        scope:
-          type: string
-      required:
-      - access_token
-      - token_type
-      - expires_in
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: AccelByte numeric error code.
-        errorMessage:
-          type: string
-      required:
-      - errorCode
-      - errorMessage
-    User:
-      type: object
-      properties:
-        userId:
-          type: string
-        namespace:
-          type: string
-        emailAddress:
-          type: string
-        displayName:
-          type: string
-        country:
-          type: string
-        emailVerified:
-          type: boolean
     CreateUserRequest:
       type: object
       properties:
@@ -202,6 +134,74 @@ components:
       - authType
       - emailAddress
       - password
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        namespace:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - token_type
+      - expires_in
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        emailAddress:
+          type: string
+        displayName:
+          type: string
+        country:
+          type: string
+        emailVerified:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   securitySchemes:
     bearerAuth:
       type: http
