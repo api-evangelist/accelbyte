@@ -105,81 +105,47 @@ paths:
               schema:
                 $ref: '#/components/schemas/Wallet'
 components:
-  parameters:
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 20
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   schemas:
-    Item:
+    Order:
       type: object
       properties:
-        itemId:
-          type: string
-        namespace:
-          type: string
-        sku:
-          type: string
-        name:
-          type: string
-        itemType:
-          type: string
-          enum:
-          - APP
-          - COINS
-          - INGAMEITEM
-          - BUNDLE
-          - CODE
-          - SUBSCRIPTION
-          - SEASON
-          - MEDIA
-          - OPTIONBOX
-        regionData:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegionPrice'
-    Wallet:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
+        orderNo:
           type: string
         userId:
           type: string
-        currencyCode:
+        itemId:
           type: string
-        balance:
-          type: integer
         status:
           type: string
           enum:
-          - ACTIVE
-          - INACTIVE
+          - INIT
+          - CHARGED
+          - CHARGEBACK
+          - FULFILLED
+          - REFUNDED
+          - CLOSED
+        price:
+          type: integer
+        currency:
+          $ref: '#/components/schemas/RegionPrice'
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        total:
+          type: integer
     Entitlement:
       type: object
       properties:
@@ -241,46 +207,80 @@ components:
       required:
       - itemId
       - quantity
-    Order:
+    Item:
       type: object
       properties:
-        orderNo:
+        itemId:
+          type: string
+        namespace:
+          type: string
+        sku:
+          type: string
+        name:
+          type: string
+        itemType:
+          type: string
+          enum:
+          - APP
+          - COINS
+          - INGAMEITEM
+          - BUNDLE
+          - CODE
+          - SUBSCRIPTION
+          - SEASON
+          - MEDIA
+          - OPTIONBOX
+        regionData:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionPrice'
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
           type: string
         userId:
           type: string
-        itemId:
+        currencyCode:
           type: string
+        balance:
+          type: integer
         status:
           type: string
           enum:
-          - INIT
-          - CHARGED
-          - CHARGEBACK
-          - FULFILLED
-          - REFUNDED
-          - CLOSED
-        price:
-          type: integer
-        currency:
-          $ref: '#/components/schemas/RegionPrice'
-    Paging:
-      type: object
-      properties:
-        previous:
-          type: string
-        next:
-          type: string
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        paging:
-          $ref: '#/components/schemas/Paging'
-        total:
-          type: integer
+          - ACTIVE
+          - INACTIVE
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

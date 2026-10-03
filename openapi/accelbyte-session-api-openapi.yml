@@ -72,6 +72,24 @@ components:
           - INVITED
           - LEFT
           - CONNECTED
+    GameSession:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        configurationName:
+          type: string
+        joinability:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionMember'
+        dsInformation:
+          type: object
+          additionalProperties: true
     GameSessionRequest:
       type: object
       properties:
@@ -102,24 +120,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SessionMember'
-    GameSession:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        configurationName:
-          type: string
-        joinability:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionMember'
-        dsInformation:
-          type: object
-          additionalProperties: true
   parameters:
     Namespace:
       name: namespace

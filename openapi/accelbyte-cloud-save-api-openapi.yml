@@ -65,6 +65,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/PlayerRecord'
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
+    PlayerRecord:
+      type: object
+      properties:
+        key:
+          type: string
+        namespace:
+          type: string
+        user_id:
+          type: string
+        value:
+          type: object
+          additionalProperties: true
+        is_public:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
   parameters:
     UserId:
       name: userId
@@ -86,45 +125,6 @@ components:
       schema:
         type: string
       example: demogame
-  schemas:
-    PlayerRecord:
-      type: object
-      properties:
-        key:
-          type: string
-        namespace:
-          type: string
-        user_id:
-          type: string
-        value:
-          type: object
-          additionalProperties: true
-        is_public:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: AccelByte numeric error code.
-        errorMessage:
-          type: string
-      required:
-      - errorCode
-      - errorMessage
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     bearerAuth:
       type: http

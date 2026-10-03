@@ -62,22 +62,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserProfile'
 components:
-  parameters:
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
     UserProfile:
       type: object
       properties:
@@ -98,24 +101,21 @@ components:
         customAttributes:
           type: object
           additionalProperties: true
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: AccelByte numeric error code.
-        errorMessage:
-          type: string
-      required:
-      - errorCode
-      - errorMessage
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

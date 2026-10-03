@@ -44,6 +44,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/DedicatedServer'
 components:
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   schemas:
     DedicatedServer:
       type: object
@@ -72,15 +81,6 @@ components:
           type: string
       required:
       - session_id
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

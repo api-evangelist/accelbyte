@@ -65,13 +65,6 @@ components:
           items:
             $ref: '#/components/schemas/RankingEntry'
   parameters:
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
     Limit:
       name: limit
       in: query
@@ -79,6 +72,13 @@ components:
       schema:
         type: integer
         default: 20
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
     Namespace:
       name: namespace
       in: path

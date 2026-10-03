@@ -109,6 +109,37 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: AccelByte numeric error code.
+        errorMessage:
+          type: string
+      required:
+      - errorCode
+      - errorMessage
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        namespace:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - token_type
+      - expires_in
     CreateUserRequest:
       type: object
       properties:
@@ -134,26 +165,6 @@ components:
       - authType
       - emailAddress
       - password
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-          example: Bearer
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
-        namespace:
-          type: string
-        scope:
-          type: string
-      required:
-      - access_token
-      - token_type
-      - expires_in
     User:
       type: object
       properties:
@@ -169,26 +180,15 @@ components:
           type: string
         emailVerified:
           type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: AccelByte numeric error code.
-        errorMessage:
-          type: string
-      required:
-      - errorCode
-      - errorMessage
   responses:
-    Unauthorized:
-      description: Missing or invalid access token.
+    BadRequest:
+      description: Bad request.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request.
+    Unauthorized:
+      description: Missing or invalid access token.
       content:
         application/json:
           schema:
