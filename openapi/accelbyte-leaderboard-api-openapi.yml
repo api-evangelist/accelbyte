@@ -45,6 +45,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/LeaderboardRankingResult'
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
   schemas:
     RankingEntry:
       type: object
@@ -64,29 +87,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RankingEntry'
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 20
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

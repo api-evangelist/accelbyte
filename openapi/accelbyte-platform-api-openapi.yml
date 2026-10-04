@@ -106,6 +106,61 @@ paths:
                 $ref: '#/components/schemas/Wallet'
 components:
   schemas:
+    OrderRequest:
+      type: object
+      properties:
+        itemId:
+          type: string
+        quantity:
+          type: integer
+        currencyCode:
+          type: string
+        price:
+          type: integer
+        region:
+          type: string
+      required:
+      - itemId
+      - quantity
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        userId:
+          type: string
+        currencyCode:
+          type: string
+        balance:
+          type: integer
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+    RegionPrice:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencyType:
+          type: string
+          enum:
+          - REAL
+          - VIRTUAL
+        price:
+          type: integer
+        discountedPrice:
+          type: integer
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
     Order:
       type: object
       properties:
@@ -128,24 +183,6 @@ components:
           type: integer
         currency:
           $ref: '#/components/schemas/RegionPrice'
-    Paging:
-      type: object
-      properties:
-        previous:
-          type: string
-        next:
-          type: string
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        paging:
-          $ref: '#/components/schemas/Paging'
-        total:
-          type: integer
     Entitlement:
       type: object
       properties:
@@ -168,20 +205,6 @@ components:
           - REVOKED
         useCount:
           type: integer
-    RegionPrice:
-      type: object
-      properties:
-        currencyCode:
-          type: string
-        currencyType:
-          type: string
-          enum:
-          - REAL
-          - VIRTUAL
-        price:
-          type: integer
-        discountedPrice:
-          type: integer
     EntitlementPagedResponse:
       type: object
       properties:
@@ -191,22 +214,17 @@ components:
             $ref: '#/components/schemas/Entitlement'
         paging:
           $ref: '#/components/schemas/Paging'
-    OrderRequest:
+    ItemPagedResponse:
       type: object
       properties:
-        itemId:
-          type: string
-        quantity:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        total:
           type: integer
-        currencyCode:
-          type: string
-        price:
-          type: integer
-        region:
-          type: string
-      required:
-      - itemId
-      - quantity
     Item:
       type: object
       properties:
@@ -234,25 +252,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RegionPrice'
-    Wallet:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        userId:
-          type: string
-        currencyCode:
-          type: string
-        balance:
-          type: integer
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
   parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
     UserId:
       name: userId
       in: path
@@ -273,14 +281,6 @@ components:
       schema:
         type: integer
         default: 0
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

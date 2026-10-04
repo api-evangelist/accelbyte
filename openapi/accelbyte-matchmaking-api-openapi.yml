@@ -61,15 +61,6 @@ paths:
           description: Ticket cancelled.
 components:
   schemas:
-    MatchTicket:
-      type: object
-      properties:
-        matchTicketID:
-          type: string
-        queueTime:
-          type: integer
-        matchPool:
-          type: string
     MatchTicketRequest:
       type: object
       properties:
@@ -86,6 +77,15 @@ components:
             type: integer
       required:
       - matchPool
+    MatchTicket:
+      type: object
+      properties:
+        matchTicketID:
+          type: string
+        queueTime:
+          type: integer
+        matchPool:
+          type: string
   parameters:
     Namespace:
       name: namespace

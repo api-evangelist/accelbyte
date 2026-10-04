@@ -102,12 +102,6 @@ components:
           type: object
           additionalProperties: true
   parameters:
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
     Namespace:
       name: namespace
       in: path
@@ -116,6 +110,12 @@ components:
       schema:
         type: string
       example: demogame
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

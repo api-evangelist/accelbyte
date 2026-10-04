@@ -65,7 +65,33 @@ paths:
                 items:
                   $ref: '#/components/schemas/StatItem'
 components:
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    StatItemUpdate:
+      type: object
+      properties:
+        statCode:
+          type: string
+        inc:
+          type: number
+          description: Increment applied to the current value.
+      required:
+      - statCode
+      - inc
     Paging:
       type: object
       properties:
@@ -93,32 +119,6 @@ components:
           type: number
         namespace:
           type: string
-    StatItemUpdate:
-      type: object
-      properties:
-        statCode:
-          type: string
-        inc:
-          type: number
-          description: Increment applied to the current value.
-      required:
-      - statCode
-      - inc
-  parameters:
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

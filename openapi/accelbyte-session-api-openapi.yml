@@ -90,6 +90,19 @@ components:
         dsInformation:
           type: object
           additionalProperties: true
+    PartySession:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        leaderId:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionMember'
     GameSessionRequest:
       type: object
       properties:
@@ -107,19 +120,6 @@ components:
           type: integer
       required:
       - configurationName
-    PartySession:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        leaderId:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionMember'
   parameters:
     Namespace:
       name: namespace
