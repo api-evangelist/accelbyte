@@ -120,6 +120,21 @@ components:
       required:
       - errorCode
       - errorMessage
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+        namespace:
+          type: string
+        emailAddress:
+          type: string
+        displayName:
+          type: string
+        country:
+          type: string
+        emailVerified:
+          type: boolean
     TokenResponse:
       type: object
       properties:
@@ -140,21 +155,6 @@ components:
       - access_token
       - token_type
       - expires_in
-    User:
-      type: object
-      properties:
-        userId:
-          type: string
-        namespace:
-          type: string
-        emailAddress:
-          type: string
-        displayName:
-          type: string
-        country:
-          type: string
-        emailVerified:
-          type: boolean
     CreateUserRequest:
       type: object
       properties:
@@ -180,15 +180,6 @@ components:
       - authType
       - emailAddress
       - password
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
   responses:
     Unauthorized:
       description: Missing or invalid access token.
@@ -202,6 +193,15 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
   securitySchemes:
     bearerAuth:
       type: http

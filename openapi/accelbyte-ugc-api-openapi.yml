@@ -50,6 +50,26 @@ paths:
                 $ref: '#/components/schemas/Content'
 components:
   schemas:
+    CreateContentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        subtype:
+          type: string
+        fileExtension:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        contentType:
+          type: string
+      required:
+      - name
+      - fileExtension
     Content:
       type: object
       properties:
@@ -76,26 +96,6 @@ components:
             type: string
         isOfficial:
           type: boolean
-    CreateContentRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        subtype:
-          type: string
-        fileExtension:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        contentType:
-          type: string
-      required:
-      - name
-      - fileExtension
   parameters:
     Namespace:
       name: namespace

@@ -69,15 +69,6 @@ components:
         type: integer
         default: 0
   schemas:
-    RankingEntry:
-      type: object
-      properties:
-        userId:
-          type: string
-        rank:
-          type: integer
-        point:
-          type: number
     LeaderboardRankingResult:
       type: object
       properties:
@@ -87,6 +78,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RankingEntry'
+    RankingEntry:
+      type: object
+      properties:
+        userId:
+          type: string
+        rank:
+          type: integer
+        point:
+          type: number
   securitySchemes:
     bearerAuth:
       type: http

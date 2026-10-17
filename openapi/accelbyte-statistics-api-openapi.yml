@@ -65,6 +65,45 @@ paths:
                 items:
                   $ref: '#/components/schemas/StatItem'
 components:
+  schemas:
+    StatItemUpdate:
+      type: object
+      properties:
+        statCode:
+          type: string
+        inc:
+          type: number
+          description: Increment applied to the current value.
+      required:
+      - statCode
+      - inc
+    StatItemPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatItem'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
+    StatItem:
+      type: object
+      properties:
+        statCode:
+          type: string
+        userId:
+          type: string
+        value:
+          type: number
+        namespace:
+          type: string
   parameters:
     Namespace:
       name: namespace
@@ -80,45 +119,6 @@ components:
       required: true
       schema:
         type: string
-  schemas:
-    StatItemUpdate:
-      type: object
-      properties:
-        statCode:
-          type: string
-        inc:
-          type: number
-          description: Increment applied to the current value.
-      required:
-      - statCode
-      - inc
-    Paging:
-      type: object
-      properties:
-        previous:
-          type: string
-        next:
-          type: string
-    StatItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/StatItem'
-        paging:
-          $ref: '#/components/schemas/Paging'
-    StatItem:
-      type: object
-      properties:
-        statCode:
-          type: string
-        userId:
-          type: string
-        value:
-          type: number
-        namespace:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

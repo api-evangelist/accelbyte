@@ -60,6 +60,19 @@ paths:
                 $ref: '#/components/schemas/PartySession'
 components:
   schemas:
+    PartySession:
+      type: object
+      properties:
+        id:
+          type: string
+        namespace:
+          type: string
+        leaderId:
+          type: string
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionMember'
     SessionMember:
       type: object
       properties:
@@ -90,19 +103,6 @@ components:
         dsInformation:
           type: object
           additionalProperties: true
-    PartySession:
-      type: object
-      properties:
-        id:
-          type: string
-        namespace:
-          type: string
-        leaderId:
-          type: string
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionMember'
     GameSessionRequest:
       type: object
       properties:

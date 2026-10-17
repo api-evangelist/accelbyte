@@ -105,7 +105,79 @@ paths:
               schema:
                 $ref: '#/components/schemas/Wallet'
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 20
+    Namespace:
+      name: namespace
+      in: path
+      required: true
+      description: The game namespace the request is scoped to.
+      schema:
+        type: string
+      example: demogame
+    UserId:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 0
   schemas:
+    RegionPrice:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencyType:
+          type: string
+          enum:
+          - REAL
+          - VIRTUAL
+        price:
+          type: integer
+        discountedPrice:
+          type: integer
+    Order:
+      type: object
+      properties:
+        orderNo:
+          type: string
+        userId:
+          type: string
+        itemId:
+          type: string
+        status:
+          type: string
+          enum:
+          - INIT
+          - CHARGED
+          - CHARGEBACK
+          - FULFILLED
+          - REFUNDED
+          - CLOSED
+        price:
+          type: integer
+        currency:
+          $ref: '#/components/schemas/RegionPrice'
+    Paging:
+      type: object
+      properties:
+        previous:
+          type: string
+        next:
+          type: string
     OrderRequest:
       type: object
       properties:
@@ -140,49 +212,6 @@ components:
           enum:
           - ACTIVE
           - INACTIVE
-    RegionPrice:
-      type: object
-      properties:
-        currencyCode:
-          type: string
-        currencyType:
-          type: string
-          enum:
-          - REAL
-          - VIRTUAL
-        price:
-          type: integer
-        discountedPrice:
-          type: integer
-    Paging:
-      type: object
-      properties:
-        previous:
-          type: string
-        next:
-          type: string
-    Order:
-      type: object
-      properties:
-        orderNo:
-          type: string
-        userId:
-          type: string
-        itemId:
-          type: string
-        status:
-          type: string
-          enum:
-          - INIT
-          - CHARGED
-          - CHARGEBACK
-          - FULFILLED
-          - REFUNDED
-          - CLOSED
-        price:
-          type: integer
-        currency:
-          $ref: '#/components/schemas/RegionPrice'
     Entitlement:
       type: object
       properties:
@@ -214,17 +243,6 @@ components:
             $ref: '#/components/schemas/Entitlement'
         paging:
           $ref: '#/components/schemas/Paging'
-    ItemPagedResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        paging:
-          $ref: '#/components/schemas/Paging'
-        total:
-          type: integer
     Item:
       type: object
       properties:
@@ -252,35 +270,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RegionPrice'
-  parameters:
-    Namespace:
-      name: namespace
-      in: path
-      required: true
-      description: The game namespace the request is scoped to.
-      schema:
-        type: string
-      example: demogame
-    UserId:
-      name: userId
-      in: path
-      required: true
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 20
-    Offset:
-      name: offset
-      in: query
-      required: false
-      schema:
-        type: integer
-        default: 0
+    ItemPagedResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        paging:
+          $ref: '#/components/schemas/Paging'
+        total:
+          type: integer
   securitySchemes:
     bearerAuth:
       type: http
