@@ -1,4 +1,4 @@
-# AccelByte (accelbyte)
+# AccelByte
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,283 +66,140 @@
 
 AccelByte provides AccelByte Gaming Services (AGS), a modular backend platform for live games. Its REST services cover player accounts and IAM, player profiles, cloud save, statistics and leaderboards, matchmaking, lobby and session, commerce and monetization, seasons and battle pass, achievements, dedicated server management (Armada/DSMC), analytics and telemetry, and user-generated content, all secured with OAuth2 client credentials and namespace-scoped IAM.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/accelbyte/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/accelbyte/refs/heads/main/apis.yml)
+**Areas:** Gaming · Backend · Backend-as-a-Service · Live Services · Player Accounts · Commerce
 
-## Tags
+## AccelByte on APIs.io
 
-- Gaming
-- Backend
-- BaaS
-- Live Services
-- Player Accounts
-- Commerce
+Everything profiled for AccelByte is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/accelbyte/](https://apis.io/providers/accelbyte/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [AccelByte Achievement API](https://apis.io/apis/accelbyte/accelbyte-achievement-api/) — Achievement definitions and player unlocks.
+- [AccelByte Basic API](https://apis.io/apis/accelbyte/accelbyte-basic-api/) — Player profiles and basic user data.
+- [AccelByte Cloud Save API](https://apis.io/apis/accelbyte/accelbyte-cloud-save-api/) — Player and game record storage.
+- [AccelByte DSMC API](https://apis.io/apis/accelbyte/accelbyte-dsmc-api/) — Dedicated Server Manager (Armada) fleets and sessions.
+- [AccelByte Game Telemetry API](https://apis.io/apis/accelbyte/accelbyte-game-telemetry-api/) — Gameplay and client telemetry ingestion.
+- [AccelByte IAM API](https://apis.io/apis/accelbyte/accelbyte-iam-api/) — Identity and Access Management - OAuth2 tokens, users, roles.
+- [AccelByte Leaderboard API](https://apis.io/apis/accelbyte/accelbyte-leaderboard-api/) — Ranked leaderboards derived from statistics.
+- [AccelByte Matchmaking API](https://apis.io/apis/accelbyte/accelbyte-matchmaking-api/) — Matchmaking V2 pools and tickets.
+- [AccelByte Platform API](https://apis.io/apis/accelbyte/accelbyte-platform-api/) — Commerce - stores, items, entitlements, wallets, orders.
+- [AccelByte Season Pass API](https://apis.io/apis/accelbyte/accelbyte-season-pass-api/) — Seasons, passes, tiers, and rewards.
+- [AccelByte Session API](https://apis.io/apis/accelbyte/accelbyte-session-api/) — Game sessions and parties (Session V2).
+- [AccelByte Statistics API](https://apis.io/apis/accelbyte/accelbyte-statistics-api/) — Player statistics and configurations.
+- [AccelByte UGC API](https://apis.io/apis/accelbyte/accelbyte-ugc-api/) — User-generated content channels and contents.
 
-## APIs
+### Published properties
 
-### AccelByte IAM API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Identity and Access Management - user registration and login, OAuth2 token issuance (client credentials, authorization code, platform token exchange), JWT verification, roles, permissions, and third-party platform account linking, all scoped to a namespace.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/access/](https://docs.accelbyte.io/gaming-services/services/access/)
-- **Base URL:** `https://demo.accelbyte.io/iam`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Accelbyte Agentic Access](https://apis.io/agentic-access/accelbyte/accelbyte-agentic-access/)
 
-- IAM
-- Identity
-- OAuth2
-- Authentication
+#### Collections (14)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/access/)
-- [API Reference](https://docs.accelbyte.io/api-explorer/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [AccelByte Gaming Services (AGS) API](https://apis.io/collections/accelbyte/open-accelbyte/)
+- [AccelByte Gaming Services (AGS) Achievement API](https://apis.io/collections/accelbyte/open-accelbyte-achievement-api/)
+- [AccelByte Gaming Services (AGS) Achievement Basic API](https://apis.io/collections/accelbyte/open-accelbyte-basic-api/)
+- [AccelByte Gaming Services (AGS) Achievement Cloud Save API](https://apis.io/collections/accelbyte/open-accelbyte-cloud-save-api/)
+- [AccelByte Gaming Services (AGS) Achievement DSMC API](https://apis.io/collections/accelbyte/open-accelbyte-dsmc-api/)
+- [AccelByte Gaming Services (AGS) Achievement Game Telemetry API](https://apis.io/collections/accelbyte/open-accelbyte-game-telemetry-api/)
+- [AccelByte Gaming Services (AGS) Achievement IAM API](https://apis.io/collections/accelbyte/open-accelbyte-iam-api/)
+- [AccelByte Gaming Services (AGS) Achievement Leaderboard API](https://apis.io/collections/accelbyte/open-accelbyte-leaderboard-api/)
+- [AccelByte Gaming Services (AGS) Achievement Matchmaking API](https://apis.io/collections/accelbyte/open-accelbyte-matchmaking-api/)
+- [AccelByte Gaming Services (AGS) Achievement Platform API](https://apis.io/collections/accelbyte/open-accelbyte-platform-api/)
+- [AccelByte Gaming Services (AGS) Achievement Season Pass API](https://apis.io/collections/accelbyte/open-accelbyte-season-pass-api/)
+- [AccelByte Gaming Services (AGS) Achievement Session API](https://apis.io/collections/accelbyte/open-accelbyte-session-api/)
+- [AccelByte Gaming Services (AGS) Achievement Statistics API](https://apis.io/collections/accelbyte/open-accelbyte-statistics-api/)
+- [AccelByte Gaming Services (AGS) Achievement UGC API](https://apis.io/collections/accelbyte/open-accelbyte-ugc-api/)
 
-### AccelByte Basic (Player Profile) API
+#### Security (2)
 
-Player profiles, namespaces, files/avatar storage, and misc user-facing metadata that games attach to a player identity.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/social/basic/](https://docs.accelbyte.io/gaming-services/services/social/basic/)
-- **Base URL:** `https://demo.accelbyte.io/basic`
+- [Accelbyte Authentication](https://apis.io/security/accelbyte/accelbyte-authentication/)
+- [Accelbyte Domain Security](https://apis.io/security/accelbyte/accelbyte-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Player Profile
-- Basic
-- User Data
+Published plans, tiers and prices.
 
-#### Properties
+- [Accelbyte Plans Pricing](https://apis.io/plans/accelbyte/accelbyte-plans-pricing/)
 
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/social/basic/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### AccelByte Cloud Save API
+Published request limits.
 
-Stores and retrieves game and player data as JSON records - player records, game records, and public/private key-value state that persists across sessions and devices.
+- [Accelbyte Rate Limits](https://apis.io/rate-limits/accelbyte/accelbyte-rate-limits/)
 
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/](https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/)
-- **Base URL:** `https://demo.accelbyte.io/cloudsave`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Cloud Save
-- Player Data
-- Records
+- [Accelbyte Finops](https://apis.io/finops/accelbyte/accelbyte-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/cloudsave/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### AccelByte Statistics & Leaderboard API
-
-Defines stat configurations, records player stat items, and exposes ranked leaderboards (all-time, weekly, monthly) built on top of tracked statistics.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/engagement/statistics/](https://docs.accelbyte.io/gaming-services/services/engagement/statistics/)
-- **Base URL:** `https://demo.accelbyte.io/social`
-
-#### Tags
-
-- Statistics
-- Leaderboard
-- Stats
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/statistics/)
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/leaderboard/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Matchmaking API
-
-Rule-based matchmaking (Matchmaking V2) - create and manage match pools, submit match tickets, and produce balanced match sessions handed off to the session service.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/play/matchmaking/](https://docs.accelbyte.io/gaming-services/services/play/matchmaking/)
-- **Base URL:** `https://demo.accelbyte.io/match2`
-
-#### Tags
-
-- Matchmaking
-- Match
-- Sessions
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/play/matchmaking/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Lobby & Session API
-
-Game sessions and parties (Session V2) plus lobby features - party management, friends, presence, and chat coordination for players before and during a match.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/play/session/](https://docs.accelbyte.io/gaming-services/services/play/session/)
-- **Base URL:** `https://demo.accelbyte.io/session`
-
-#### Tags
-
-- Session
-- Lobby
-- Party
-- Presence
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/play/session/)
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/play/lobby/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Commerce (Platform) API
-
-In-game commerce and monetization - catalog/stores, items, entitlements, wallets and virtual currencies, orders and checkout, fulfillment, and integrations with real-money payment gateways.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/monetization/](https://docs.accelbyte.io/gaming-services/services/monetization/)
-- **Base URL:** `https://demo.accelbyte.io/platform`
-
-#### Tags
-
-- Commerce
-- Monetization
-- Store
-- Entitlement
-- Wallet
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/monetization/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Seasons & Battle Pass API
-
-Season Pass / Battle Pass - define seasons, tiers, passes, and rewards, grant experience, and track player progression and claimed rewards across a season.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/](https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/)
-- **Base URL:** `https://demo.accelbyte.io/seasonpass`
-
-#### Tags
-
-- Seasons
-- Battle Pass
-- Rewards
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/season-pass/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Achievement API
-
-Achievement definitions (incremental and standard), player unlock tracking, and tie-ins with statistics so achievements progress automatically as stats change.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/engagement/achievement/](https://docs.accelbyte.io/gaming-services/services/engagement/achievement/)
-- **Base URL:** `https://demo.accelbyte.io/achievement`
-
-#### Tags
-
-- Achievements
-- Trophies
-- Progression
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/achievement/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Dedicated Server (Armada/DSMC) API
-
-Dedicated Server Manager (Armada/DSMC) - register and manage dedicated game server fleets, claim and release server sessions, and orchestrate multi-region server scaling for session-based games.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/](https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/)
-- **Base URL:** `https://demo.accelbyte.io/dsmcontroller`
-
-#### Tags
-
-- Dedicated Servers
-- DSMC
-- Armada
-- Fleet
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/ags-cloud/armada/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte Analytics & Telemetry API
-
-Game Telemetry - ingest gameplay and client telemetry events (single and batched) for the analytics pipeline, feeding dashboards and downstream data exports.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/](https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/)
-- **Base URL:** `https://demo.accelbyte.io/game-telemetry`
-
-#### Tags
-
-- Analytics
-- Telemetry
-- Events
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/analytics/game-telemetry/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### AccelByte UGC API
-
-User-Generated Content - lets players create, upload, tag, share, like, and download content (channels, contents, and metadata) with moderation hooks.
-
-- **Human URL:** [https://docs.accelbyte.io/gaming-services/services/engagement/ugc/](https://docs.accelbyte.io/gaming-services/services/engagement/ugc/)
-- **Base URL:** `https://demo.accelbyte.io/ugc`
-
-#### Tags
-
-- UGC
-- User Generated Content
-- Content
-
-#### Properties
-
-- [Documentation](https://docs.accelbyte.io/gaming-services/services/engagement/ugc/)
-- [OpenAPI](openapi/accelbyte-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/accelbyte.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/accelbyte.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/AccelByte)
-- [LinkedIn](https://www.linkedin.com/company/accelbyte)
 - [Website](https://accelbyte.io/)
 - [Documentation](https://docs.accelbyte.io/)
-- [Plans](plans/accelbyte-plans-pricing.yml)
-- [Rate Limits](rate-limits/accelbyte-rate-limits.yml)
-- [Fin Ops](finops/accelbyte-finops.yml)
+- [Blog](https://accelbyte.io/blog/rss.xml)
+- [GitHub](https://github.com/AccelByte)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 22.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/accelbyte/](https://apis.io/providers/accelbyte/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AccelByte: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/accelbyte/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
