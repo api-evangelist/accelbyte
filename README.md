@@ -96,7 +96,7 @@ Each property below is a page on APIs.io carrying the machine-readable artifact 
 
 Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Accelbyte Agentic Access](https://apis.io/agentic-access/accelbyte/accelbyte-agentic-access/)
+- [AccelByte Agentic Access](https://apis.io/agentic-access/accelbyte/accelbyte-agentic-access/)
 
 #### Collections (14)
 
@@ -117,30 +117,36 @@ Postman and Open Collection request collections.
 - [AccelByte Gaming Services (AGS) Achievement Statistics API](https://apis.io/collections/accelbyte/open-accelbyte-statistics-api/)
 - [AccelByte Gaming Services (AGS) Achievement UGC API](https://apis.io/collections/accelbyte/open-accelbyte-ugc-api/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [AccelByte API Rules](https://apis.io/rules/accelbyte/accelbyte-rules/)
+
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Accelbyte Authentication](https://apis.io/security/accelbyte/accelbyte-authentication/)
-- [Accelbyte Domain Security](https://apis.io/security/accelbyte/accelbyte-domain-security/)
+- [AccelByte Authentication](https://apis.io/security/accelbyte/accelbyte-authentication/)
+- [AccelByte Domain Security](https://apis.io/security/accelbyte/accelbyte-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Accelbyte Plans Pricing](https://apis.io/plans/accelbyte/accelbyte-plans-pricing/)
+- [AccelByte Plans Pricing](https://apis.io/plans/accelbyte/accelbyte-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Accelbyte Rate Limits](https://apis.io/rate-limits/accelbyte/accelbyte-rate-limits/)
+- [AccelByte Rate Limits](https://apis.io/rate-limits/accelbyte/accelbyte-rate-limits/)
 
 #### FinOps (1)
 
 What the API costs to run, by operation.
 
-- [Accelbyte Finops](https://apis.io/finops/accelbyte/accelbyte-finops/)
+- [AccelByte Finops](https://apis.io/finops/accelbyte/accelbyte-finops/)
 
 ## Where to find this API
 
@@ -153,18 +159,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 28.2** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 29.6** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 66.1 |
+| Discoverability | 73.2 |
 | Contract quality | 44.9 |
-| Contract governance | 0.0 |
-| Operational transparency | 10.5 |
+| Contract governance | 13.6 |
+| Operational transparency | 11.9 |
 | Developer ergonomics | 32.1 |
-| Access clarity | 7.9 |
+| Access clarity | 6.4 |
 
-**Agent readiness 22.1** — agent-aware
+**Agent readiness 29.5** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -174,7 +180,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | — |
 | Auth Clarity | bearer (partial credit) |
 | Idempotency | — |
-| Error Semantics | — |
+| Error Semantics | verified |
 | OpenAPI Examples | partial |
 | Rate Limit Signal | derived (partial credit) |
 | Event Surface Described | — |
@@ -187,8 +193,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/accelbyte/](https://apis.io/providers/accelbyte/).
 
